@@ -6,18 +6,22 @@ import FromOurMenu from "./Sections/FromOurMenu";
 import OrderOnline from "./Sections/OrderOnline";
 import SubBanner from "./Sections/SubBanner";
 import Testimonials from "./Sections/Testimonials";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
   return (
     <>
+      <Helmet>
+        <title>Home | Bistro Boss</title>
+      </Helmet>
       <Banners />
       <OrderOnline />
-      <SubBanner/>
-      <FromOurMenu/>
-      <CallUs/>
-      <ChefRecommends/>
-      <FeaturedMenu/>
-      <Testimonials/>
+      <SubBanner />
+      <FromOurMenu />
+      <CallUs />
+      <ChefRecommends />
+      <FeaturedMenu />
+      <Testimonials />
     </>
   );
 };
