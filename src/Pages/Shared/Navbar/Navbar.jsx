@@ -16,11 +16,11 @@ const Navbar = () => {
          className={({ isActive }) => (isActive ? "active" : "default")}>DASHBOARD</NavLink>
       </li>
       <li>
-        <NavLink to="/our-menu" className={({ isActive }) => (isActive ? "active" : "default")}>OUR MENU</NavLink>
+        <NavLink to="/menu" className={({ isActive }) => (isActive ? "active" : "default")}>OUR MENU</NavLink>
         
       </li>
       <li>
-        <NavLink to="/our-shop"
+        <NavLink to="/shop/salad"
          className={({ isActive }) => (isActive ? "active" : "default")}>OUR SHOP</NavLink>
       </li>
     </>

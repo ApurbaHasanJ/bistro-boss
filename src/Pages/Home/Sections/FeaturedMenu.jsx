@@ -24,7 +24,7 @@ const FeaturedMenu = () => {
               consequuntur omnis ullam maxime tenetur.
             </p>
             <div className="h-6">
-            <button className="btn-outline text-white p-3 duration-1000 rounded-lg hover:bg-white hover:text-black border-white border-0 hover:border-white hover:border-4 border-b-4 ">Read More</button>
+            <button className="btn-white px-4 py-2 uppercase font-medium text-lg">Read More</button>
             </div>
           </div>
         </div>

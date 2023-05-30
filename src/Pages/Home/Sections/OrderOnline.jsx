@@ -22,7 +22,7 @@ const OrderOnline = () => {
             clickable: true,
           }}
           modules={[FreeMode, Pagination]}
-          className="mySwiper"
+          className="mySwiper mt-11"
         >
           <SwiperSlide className="drop-shadow-2xl">
             <img src="https://i.postimg.cc/vZ7ffJDY/slide1.jpg" alt="" />
