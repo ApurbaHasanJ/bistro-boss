@@ -1,63 +1,23 @@
-import { useRef } from "react";
-import { useContext } from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import {
-  loadCaptchaEnginge,
-  LoadCanvasTemplate,
-  validateCaptcha,
-} from "react-simple-captcha";
-import { AuthContext } from "../../Layouts/AuthProvider";
-
-const Login = () => {
-    const captchaRef = useRef(null)
-    const [disabled, setDisabled] = useState(true)
-
-    const {signIn} = useContext(AuthContext)
 
 
 
-
-// show password
+const SignUp = () => {
+  // show password
   const [show, setShow] = useState(false);
 
-  // login controls
-  const handleLogin = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const email = form.email.value;
-    const password = form.password.value;
-    // console.log(email, password);
-    signIn(email, password)
-    .then(result =>{
-      const user = result.user;
-      console.log(user);
-    })
-  };
+  const { register, handleSubmit, formState: { errors } } = useForm();
+    const onSubmit = data => {
+      console.log(data);
+    };
 
+ 
 
-  const handleValidateCaptcha =()=>{
-    const user_captcha_value = captchaRef.current.value
-    // console.log(value);
-    if(validateCaptcha(user_captcha_value)==true){
-setDisabled(false)
-    }
-    else{
-        setDisabled(true)
-    }
-    
-  }
-
-  useEffect(() => {
-    loadCaptchaEnginge(6);
-  }, []);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
-  return (
-    <div
+  
+    return (
+        <div
       className="py-20 "
       style={{
         backgroundImage: `url('https://i.postimg.cc/tg8rPHSH/authentication.png')`,
@@ -71,7 +31,7 @@ setDisabled(false)
         }}
       >
         <h3 className="text-xl lg:text-4xl md:text-2xl text-slate-900 text-center font-bold pt-5 mb-5">
-          Login
+          Sign Up
         </h3>
         <div className=" grid lg:grid-cols-2  my-7 mt-0 lg:my-16 items-center">
           {/* Login Img */}
@@ -82,7 +42,22 @@ setDisabled(false)
             />
           </div>
           <div className=" p-10 mx-3 lg:mx-0 rounded-lg">
-            <form onSubmit={handleLogin}>
+            <form 
+            onSubmit={handleSubmit(onSubmit)}
+            >
+              <div className="form-control mb-3">
+                <label className="label text-base font-medium text-slate-900 ">
+                  <span className="label-text">Name</span>
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  {...register("name")}
+                  required
+                  placeholder="Your email"
+                  className="input hover:shadow-md input-bordered"
+                />
+              </div>
               <div className="form-control mb-3">
                 <label className="label text-base font-medium text-slate-900 ">
                   <span className="label-text">Email</span>
@@ -90,6 +65,7 @@ setDisabled(false)
                 <input
                   type="email"
                   name="email"
+                  {...register("email")}
                   required
                   placeholder="Your email"
                   className="input hover:shadow-md input-bordered"
@@ -103,6 +79,7 @@ setDisabled(false)
                   type={show ? "text" : "password"}
                   id="password"
                   name="password"
+                  {...register("password")}
                   className="input hover:shadow-md input-bordered"
                   required
                   placeholder="Password"
@@ -124,29 +101,14 @@ setDisabled(false)
                     Show password
                   </label>
                 </div>
-                <div className="form-control mb-3">
-                  <LoadCanvasTemplate />
-                </div>
-                <div className="form-control mb-3">
-                  <input
-                    type="text"
-                    name="captcha"
-                    ref={captchaRef}
-
-                    required
-                    placeholder="Type here..."
-                    className="input hover:shadow-md input-bordered"
-                  />
-                </div>
                 
-                <button
-                onClick={handleValidateCaptcha}
-                className="btn  btn-outline w-2/12 btn-xs text-[#d1a054b3] border-[#d1a054b3] hover:bg-[#d1a054b3] hover:border-[#d1a054b3]">Validate</button>
+                
+                
               </div>
 
               <div className="form-control mt-8">
                 <input
-                disabled={disabled}
+                // disabled={disabled}
                   type="submit"
                   value="Sign in"
                   className="btn rounded-md border-none text-white bg-[#d1a054b3] hover:bg-[#ec9f2db3]"
@@ -155,7 +117,7 @@ setDisabled(false)
             </form>
             <h6 className="text-center my-4 text-[#D1A054]">
               New here?{" "}
-              <Link to="/register" state={location.state}>
+              <Link to="/login" state={location.state}>
                 <span className="  font-semibold hover:underline">
                   Create a New Account
                 </span>
@@ -183,7 +145,7 @@ setDisabled(false)
         </div>
       </div>
     </div>
-  );
+    );
 };
 
-export default Login;
+export default SignUp;

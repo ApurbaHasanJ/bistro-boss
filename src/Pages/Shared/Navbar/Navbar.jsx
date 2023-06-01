@@ -63,7 +63,7 @@ const Navbar = () => {
         <ul className="flex gap-4 menu-horizontal px-1">{navItems}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Get started</a>
+        <Link to='/login' className="btn-card text-lg font-medium py-2 px-3">login</Link>
       </div>
     </header>
   );
