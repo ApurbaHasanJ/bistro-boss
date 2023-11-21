@@ -2,6 +2,7 @@ import { useState } from "react";
 import FoodCard from "../Shared/FoosCard/FoodCard";
 
 const RecipesTab = ({ menus }) => {
+  
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
 
@@ -44,5 +45,6 @@ const RecipesTab = ({ menus }) => {
     </>
   );
 };
+
 
 export default RecipesTab;

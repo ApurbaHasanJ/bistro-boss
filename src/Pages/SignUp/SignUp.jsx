@@ -1,35 +1,32 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-
-
+import SocialSignup from "../Shared/SocialSignup/SocialSignup";
 
 const SignUp = () => {
   // show password
   const [show, setShow] = useState(false);
 
-  const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = data => {
-      console.log(data);
-    };
+  const {
+    register,
+    handleSubmit,
+    // formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => {
+    console.log(data);
+  };
 
- 
-
-  
-    return (
-        <div
-      className="py-20 "
+  return (
+    <div
+      className="py-20 bg-transparent z-20"
       style={{
         backgroundImage: `url('https://i.postimg.cc/tg8rPHSH/authentication.png')`,
-      }}
-    >
+      }}>
       <div
         className="my-container shadow-xl"
         style={{
-          backgroundImage: `url('https://i.postimg.cc/tg8rPHSH/authentication.png')`,
           boxShadow: "10px 10px 10px 10px rgba(0, 0, 0, 0.25)",
-        }}
-      >
+        }}>
         <h3 className="text-xl lg:text-4xl md:text-2xl text-slate-900 text-center font-bold pt-5 mb-5">
           Sign Up
         </h3>
@@ -42,9 +39,7 @@ const SignUp = () => {
             />
           </div>
           <div className=" p-10 mx-3 lg:mx-0 rounded-lg">
-            <form 
-            onSubmit={handleSubmit(onSubmit)}
-            >
+            <form onSubmit={handleSubmit(onSubmit)}>
               <div className="form-control mb-3">
                 <label className="label text-base font-medium text-slate-900 ">
                   <span className="label-text">Name</span>
@@ -96,19 +91,15 @@ const SignUp = () => {
                   />
                   <label
                     htmlFor="showPassword"
-                    className="ml-2 text-base font-medium text-slate-900 "
-                  >
+                    className="ml-2 text-base font-medium text-slate-900 ">
                     Show password
                   </label>
                 </div>
-                
-                
-                
               </div>
 
               <div className="form-control mt-8">
                 <input
-                // disabled={disabled}
+                  // disabled={disabled}
                   type="submit"
                   value="Sign in"
                   className="btn rounded-md border-none text-white bg-[#d1a054b3] hover:bg-[#ec9f2db3]"
@@ -129,23 +120,13 @@ const SignUp = () => {
               <div className="border-b h-1 w-full border-gray-300"></div>
             </div>
             <div className="form-control  mt-4">
-              <button
-                //   onClick={googleSignIn}
-                className=" w-full flex gap-3 btn-sec"
-              >
-                <img
-                  className="w-7 h-7"
-                  src="https://i.postimg.cc/4NhHcV5v/google.png"
-                  alt=""
-                />
-                <span className="capitalize ">Continue With Google</span>
-              </button>
+              <SocialSignup/>
             </div>
           </div>
         </div>
       </div>
     </div>
-    );
+  );
 };
 
 export default SignUp;

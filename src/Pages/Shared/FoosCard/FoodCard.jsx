@@ -1,13 +1,13 @@
 const FoodCard = ({ menus }) => {
     const {name, image, price, recipe} = menus
   return (
-    <div className="card lg:w-96 rounded-none bg-base-100 shadow-md">
-      <img className="w-full relative"
+    <div className="card  mx-auto mt-10 rounded-none rounded-t-md bg-base-100 shadow-md">
+      <img className="w-full relative rounded-t-xl"
           src={image}
           alt="Recipe"
         />
         <p className="absolute top-4 right-4 badge">${price}</p>
-      <div className="card-body">
+      <div className="card-body bg-slate-100">
         <h2 className=" text-center font-semibold text-xl">{name}</h2>
         <p>{recipe}</p>
         <div className="card-actions justify-center">

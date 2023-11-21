@@ -4,39 +4,75 @@ const Navbar = () => {
   const navItems = (
     <>
       <li>
-        <NavLink to="/"  className={({ isActive }) => (isActive ? "active" : "default")}>HOME</NavLink>
+        <NavLink
+          to="/"
+          className={({ isActive }) => (isActive ? "active" : "default")}>
+          HOME
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/contact-us"
-         className={({ isActive }) => (isActive ? "active" : "default")}
-         >CONTACT US</NavLink>
+        <NavLink
+          to="/contact-us"
+          className={({ isActive }) => (isActive ? "active" : "default")}>
+          CONTACT US
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/dashboard"
-         className={({ isActive }) => (isActive ? "active" : "default")}>DASHBOARD</NavLink>
+        <NavLink
+          to="/dashboard"
+          className={({ isActive }) => (isActive ? "active" : "default")}>
+          DASHBOARD
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/menu" className={({ isActive }) => (isActive ? "active" : "default")}>OUR MENU</NavLink>
-        
+        <NavLink
+          to="/menu"
+          className={({ isActive }) => (isActive ? "active" : "default")}>
+          OUR MENU
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/shop/salad"
-         className={({ isActive }) => (isActive ? "active" : "default")}>OUR SHOP</NavLink>
+        <NavLink
+          to="/shop"
+          className={({ isActive }) => (isActive ? "active" : "default")}>
+          OUR SHOP
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/login"
+          className={({ isActive }) => (isActive ? "active" : "default")}>
+          LOGIN
+        </NavLink>
       </li>
     </>
   );
   return (
-    <header className="navbar fixed z-10 bg-gray-900 bg-opacity-30 text-white ">
+    <header className=" navbar justify-between fixed z-10 bg-gray-900 bg-opacity-30 text-white px-10 md:pt-6 md:pb-4 pt-3 pb-2.5">
       <div className="navbar-start">
+        <Link className=" normal-case text-xl">
+          <div>
+            <h2 className="md:text-[35px] text-2xl font-black font-[Cinzel]">
+              Bistro Boss
+            </h2>
+            <p className="font-[Cinzel] font-bold tracking-[5px] md:tracking-[9.12px]">
+              Restaurant
+            </p>
+          </div>
+        </Link>
+      </div>
+      <div className="navbar-end w-full hidden lg:flex">
+        <ul className="flex gap-4 menu-horizontal px-1">{navItems}</ul>
+      </div>
+      <div className="navbar-end lg:hidden">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
+              className="h-7 w-7"
               fill="none"
               viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
+              stroke="currentColor">
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -45,25 +81,10 @@ const Navbar = () => {
               />
             </svg>
           </label>
-          <ul
-            
-            className=" dropdown-content mt-3 p-2 shadow  w-52"
-          >
+          <ul className=" dropdown-content mt-5 right-0 p-2 shadow bg-opacity-30 grid gap-2 bg-gray-900">
             {navItems}
           </ul>
         </div>
-        <Link className=" normal-case text-xl">
-          <div>
-            <h2 className="text-3xl font-black font-serif">Bistro Boss</h2>
-            <p className="">Restaurant</p>
-          </div>
-        </Link>
-      </div>
-      <div className="navbar-center hidden lg:flex">
-        <ul className="flex gap-4 menu-horizontal px-1">{navItems}</ul>
-      </div>
-      <div className="navbar-end">
-        <Link to='/login' className="btn-card text-lg font-medium py-2 px-3">login</Link>
       </div>
     </header>
   );

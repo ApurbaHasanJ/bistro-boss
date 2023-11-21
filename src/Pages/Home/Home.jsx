@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Banners from "./Sections/Banners";
 import CallUs from "./Sections/CallUs";
 import ChefRecommends from "./Sections/ChefRecommends";
@@ -9,6 +10,10 @@ import Testimonials from "./Sections/Testimonials";
 import { Helmet } from "react-helmet-async";
 
 const Home = () => {
+  useEffect(() => {
+    window.history.scrollRestoration = "manual";
+  }, []);
+
   return (
     <>
       <Helmet>

@@ -4,7 +4,7 @@ import useMenu from "../../hooks/useMenu";
 import MenuCategory from "../Shared/MenuCategory/MenuCategory";
 
 const Menu = () => {
-  const [data] = useMenu();
+  const [data, loading] = useMenu();
   const offered = data.filter((items) => items.category === "offered");
   const desserts = data.filter((items) => items.category === "dessert");
   const pizzas = data.filter((items) => items.category === "pizza");
@@ -24,6 +24,7 @@ const Menu = () => {
       <div className="mt-24">
         {/* offered menu */}
         <MenuCategory
+          loading={loading}
           menus={offered}
           subTitle={"---Don't miss---"}
           title={"TODAY'S OFFER"}
@@ -31,6 +32,7 @@ const Menu = () => {
 
         {/* Desserts menu */}
         <MenuCategory
+          loading={loading}
           menus={desserts}
           menuTitle={"dessert"}
           img={"https://i.postimg.cc/Dy8j1TjQ/dessert-bg.jpg"}
@@ -38,6 +40,7 @@ const Menu = () => {
 
         {/* Pizzas Menu */}
         <MenuCategory
+          loading={loading}
           menus={pizzas}
           menuTitle={"pizza"}
           img={"https://i.postimg.cc/GtpM7wcC/pizza-bg.jpg"}
@@ -45,6 +48,7 @@ const Menu = () => {
 
         {/* Salads Menu */}
         <MenuCategory
+          loading={loading}
           menus={salads}
           menuTitle={"salad"}
           img={"https://i.postimg.cc/VvHK2G6b/salad-bg.jpg"}
@@ -52,6 +56,7 @@ const Menu = () => {
 
         {/* Soups Menu */}
         <MenuCategory
+          loading={loading}
           menus={soups}
           menuTitle={"soup"}
           img={"https://i.postimg.cc/v8P21BzH/soup-bg.jpg"}
