@@ -1,11 +1,12 @@
 import { Swiper, SwiperSlide } from "swiper/react";
+import "./OrderOnline.css";
 
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 
 // import required modules
-import { Autoplay, FreeMode } from "swiper";
+import { Autoplay, FreeMode, Pagination } from "swiper";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -23,7 +24,7 @@ const OrderOnline = () => {
 
   return (
     <>
-      <section className="my-container mt-24">
+      <section className="my-container  mt-24">
         <SectionTitle
           subTitle={"---From 11:00am to 10:00pm---"}
           title={"ORDER ONLINE"}
@@ -36,20 +37,25 @@ const OrderOnline = () => {
             delay: 2500,
             // disableOnInteraction: ,
           }}
-          modules={[FreeMode, Autoplay]}
-          className="mySwiper  mt-11 ">
-          {ordersOnline.map((orderOnline) => (
-            <SwiperSlide key={orderOnline._id} className="drop-shadow-2xl">
-              <img
-                className="h-full"
-                src={orderOnline.image}
-                alt={orderOnline.title}
-              />
-              <h4 className="md:text-3xl uppercase text-center text-white -mt-[76px]   pb-10 ">
-                {orderOnline.title}
-              </h4>
-            </SwiperSlide>
-          ))}
+          // pagination={{
+          //   clickable: true,
+          // }}
+          className="overflow-hidden"
+          modules={[FreeMode, Pagination, Autoplay]}>
+          <div className="mySwiper my-container mt-11 ">
+            {ordersOnline.map((orderOnline) => (
+              <SwiperSlide key={orderOnline._id} className="drop-shadow-2xl">
+                <img
+                  className="h-full"
+                  src={orderOnline.image}
+                  alt={orderOnline.title}
+                />
+                <h4 className="md:text-3xl uppercase text-center text-white -mt-[76px]   pb-10 ">
+                  {orderOnline.title}
+                </h4>
+              </SwiperSlide>
+            ))}
+          </div>
         </Swiper>
       </section>
     </>

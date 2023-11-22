@@ -16,6 +16,7 @@ import { Rating, RoundedStar } from "@smastrom/react-rating";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuoteLeft } from "@fortawesome/free-solid-svg-icons";
 
+import "./Testimonials.css"
 
 const Testimonials = () => {
   const [reviews, setReviews] = useState([]);
