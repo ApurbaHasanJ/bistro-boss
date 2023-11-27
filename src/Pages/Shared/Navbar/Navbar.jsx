@@ -19,7 +19,7 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to="/dashboard"
+          to="/dashboard/admin-home"
           className={({ isActive }) => (isActive ? "active" : "default")}>
           DASHBOARD
         </NavLink>
@@ -40,7 +40,7 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to="/signup"
+          to="/register"
           className={({ isActive }) => (isActive ? "active" : "default")}>
           SIGN UP
         </NavLink>

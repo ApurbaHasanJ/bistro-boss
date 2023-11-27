@@ -4,21 +4,16 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-
-
-import { useEffect, useState } from "react";
 import { Autoplay, Pagination } from "swiper";
+import useBanner from "../../../hooks/useBanner";
 // import { A11y, Pagination, Scrollbar } from "swiper";
+
+
+
 const Banners = () => {
-  const [banners, setBanners] = useState([]);
-  useEffect(() => {
-    fetch("http://localhost:5000/banners")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setBanners(data);
-      });
-  }, []);
+  const [banners, BannersLoading]= useBanner()
+  console.log(BannersLoading);
+
   return (
     <Swiper
         // spaceBetween={30}

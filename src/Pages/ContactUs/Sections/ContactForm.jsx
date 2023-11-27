@@ -1,7 +1,7 @@
 import ReCAPTCHA from "react-google-recaptcha";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import { useForm } from "react-hook-form";
-import { BsFillSendFill } from 'react-icons/bs';
+import { BsFillSendFill } from "react-icons/bs";
 
 const ContactForm = () => {
   const {
@@ -49,7 +49,7 @@ const ContactForm = () => {
                       name="name"
                       {...register("name")}
                       required
-                      placeholder="Your email"
+                      placeholder="Your name"
                       className="input hover:shadow-md "
                     />
                   </div>
@@ -103,17 +103,18 @@ const ContactForm = () => {
                     sitekey="6Lciln4oAAAAAPsdss2OH2dWn-3NKaiY1GC6dIAq"
                     onChange={onChange}
                   />
-                  ,
                 </div>
 
-                <div onSubmit={handleSubmit} className="flex justify-center mt-5 ">
+                <div
+                  onSubmit={handleSubmit}
+                  className="flex justify-center mt-5 ">
                   <button
                     type="submit"
                     {...register("submit")}
                     // disabled={disabled}
                     className="  border-none bg-gradient-to-r from-[#835D23] hover:from-[#a57224] hover:to-[#d28209] to-[#c87f12] flex justify-center items-center gap-3 p-4 px-5 text-white bg-[#d1a054b3] hover:bg-[#ec9f2db3]">
                     <span className="text-xl font-semibold">Send Message</span>
-                    <BsFillSendFill  className="text-xl"/>
+                    <BsFillSendFill className="text-xl" />
                   </button>
                 </div>
               </form>

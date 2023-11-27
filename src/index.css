@@ -35,6 +35,14 @@
   @apply font-semibold tracking-wide text-white hover:text-slate-300 transition-colors duration-300;
 }
 
+.dashActive {
+  @apply text-white font-semibold tracking-wide  transition-colors duration-300;
+}
+
+.dashDefault {
+  @apply font-semibold tracking-wide text-[#151515] hover:text-gray-500 transition-colors duration-300;
+}
+
 .swiper {
   width: 100%;
   height: 100%;
@@ -72,4 +80,3 @@
     color: rgb(251, 154, 36);
   }
 }
-
