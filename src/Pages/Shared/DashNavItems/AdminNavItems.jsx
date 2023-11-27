@@ -45,7 +45,7 @@ const AdminNavItems = () => {
         </li>
         <li>
           <NavLink
-            to="/dashboard/manage-items"
+            to="/dashboard/manage-bookings"
             className={({ isActive }) =>
               isActive
                 ? "dashActive flex items-center justify-start gap-4"

@@ -11,6 +11,7 @@ import Dashboard from "../Layouts/Dashboard/Dashboard";
 import AdminHome from "../Pages/Dashboard/AdminPages/AdminHome";
 import UserHome from "../Pages/Dashboard/UserPages/UserHome";
 import AddItems from "../Pages/Dashboard/AdminPages/AddItems";
+import ManageItems from "../Pages/Dashboard/AdminPages/ManageItems";
 
 export const router = createBrowserRouter([
   {
@@ -58,10 +59,13 @@ export const router = createBrowserRouter([
         element: <AddItems />,
       },
       {
+        path: "manage-items",
+        element: <ManageItems />,
+      },
+      {
         path: "user-home",
         element: <UserHome />,
       },
     ],
   },
-  
 ]);
