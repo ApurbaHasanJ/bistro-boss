@@ -1,12 +1,12 @@
-import { useForm } from "react-hook-form";
-import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import { ImSpoonKnife } from "react-icons/im";
+import SectionTitle from "../../../components/SectionTitle/SectionTitle";
+import { useForm } from "react-hook-form";
 
-const AddItems = () => {
+const UpdateItem = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    // formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
     console.log(data);
@@ -90,29 +90,16 @@ const AddItems = () => {
                     rows="8"
                   />
                 </div>
-                {/* Recipe photo */}
-                <div className="form-control mb-3">
-                  <label className="label justify-start text-base font-medium text-slate-900 ">
-                    <span className="label-text">Upload Item Image</span>
-                    <span className="text-red-600 text-xl">*</span>
-                  </label>
-                  <input
-                    className="  hover:shadow-md "
-                    type="file"
-                    {...register("photos", { required: true })}
-                  />
-                  {errors.photos && <span>Please Upload a Photo.</span>}
-                </div>
 
                 <div
                   onSubmit={handleSubmit}
-                  className="flex justify-start mt-7 ">
+                  className="flex justify-center mt-7 ">
                   <button
                     type="submit"
                     {...register("submit")}
                     // disabled={disabled}
                     className="  border-none bg-gradient-to-r from-[#835D23] hover:from-[#a57224] hover:to-[#d28209] to-[#c87f12] flex justify-center items-center gap-3 p-4 px-5 text-white bg-[#d1a054b3] hover:bg-[#ec9f2db3]">
-                    <span className="text-xl font-semibold">Add Item</span>
+                    <span className="text-xl font-semibold">Update Recipe</span>
                     <ImSpoonKnife
                       className=" text-2xl md:mx-0 mx-auto"
                       title="ADD ITEMS"
@@ -128,4 +115,4 @@ const AddItems = () => {
   );
 };
 
-export default AddItems;
+export default UpdateItem;

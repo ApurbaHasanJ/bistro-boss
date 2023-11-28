@@ -12,6 +12,8 @@ import AdminHome from "../Pages/Dashboard/AdminPages/AdminHome";
 import UserHome from "../Pages/Dashboard/UserPages/UserHome";
 import AddItems from "../Pages/Dashboard/AdminPages/AddItems";
 import ManageItems from "../Pages/Dashboard/AdminPages/ManageItems";
+import ManageBookings from "../Pages/Dashboard/AdminPages/ManageBookings";
+import UpdateItem from "../Pages/Dashboard/AdminPages/UpdateItem";
 
 export const router = createBrowserRouter([
   {
@@ -61,6 +63,14 @@ export const router = createBrowserRouter([
       {
         path: "manage-items",
         element: <ManageItems />,
+      },
+      {
+        path: "update-item",
+        element: <UpdateItem />,
+      },
+      {
+        path: "manage-bookings",
+        element: <ManageBookings />,
       },
       {
         path: "user-home",
