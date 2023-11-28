@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 
 const AdminNavItems = () => {
   return (
-    <nav className="w-full">
+    <nav className="w-full font-[Cinzel]">
       <ul className="grid gap-6 ">
         <li>
           <NavLink
@@ -15,8 +15,10 @@ const AdminNavItems = () => {
                 ? "dashActive flex items-center justify-start gap-4"
                 : "dashDefault flex items-center justify-start gap-4"
             }>
-            <FaHome className="w-14 h-6 md:mx-0 mx-auto" title="ADMIN HOME"/>
-            <span className="text-base font-semibold md:block hidden whitespace-nowrap">ADMIN HOME</span>
+            <FaHome className="w-14 h-6 md:mx-0 mx-auto" title="ADMIN HOME" />
+            <span className="text-base font-semibold md:block hidden whitespace-nowrap">
+              ADMIN HOME
+            </span>
           </NavLink>
         </li>
         <li>
@@ -27,8 +29,13 @@ const AdminNavItems = () => {
                 ? "dashActive flex items-center justify-start gap-4"
                 : "dashDefault flex items-center justify-start gap-4"
             }>
-            <ImSpoonKnife className="w-14 h-6 md:mx-0 mx-auto" title="ADD ITEMS"/>
-            <span className="text-base font-semibold md:block hidden whitespace-nowrap">ADD ITEMS</span>
+            <ImSpoonKnife
+              className="w-14 h-6 md:mx-0 mx-auto"
+              title="ADD ITEMS"
+            />
+            <span className="text-base font-semibold md:block hidden whitespace-nowrap">
+              ADD ITEMS
+            </span>
           </NavLink>
         </li>
         <li>
@@ -39,8 +46,10 @@ const AdminNavItems = () => {
                 ? "dashActive flex items-center justify-start gap-4"
                 : "dashDefault flex items-center justify-start gap-4"
             }>
-            <FaList className="w-14 h-6 md:mx-0 mx-auto" title="MANAGE ITEMS"/>
-            <span className="text-base font-semibold md:block hidden whitespace-nowrap">MANAGE ITEMS</span>
+            <FaList className="w-14 h-6 md:mx-0 mx-auto" title="MANAGE ITEMS" />
+            <span className="text-base font-semibold md:block hidden whitespace-nowrap">
+              MANAGE ITEMS
+            </span>
           </NavLink>
         </li>
         <li>
@@ -51,20 +60,27 @@ const AdminNavItems = () => {
                 ? "dashActive flex items-center justify-start gap-4"
                 : "dashDefault flex items-center justify-start gap-4"
             }>
-            <FaBook className="w-14 h-6 md:mx-0 mx-auto" title="MANAGE BOOKINGS"/>
-            <span className="text-base font-semibold md:block hidden whitespace-nowrap">MANAGE BOOKINGS</span>
+            <FaBook
+              className="w-14 h-6 md:mx-0 mx-auto"
+              title="MANAGE BOOKINGS"
+            />
+            <span className="text-base font-semibold md:block hidden whitespace-nowrap">
+              MANAGE BOOKINGS
+            </span>
           </NavLink>
         </li>
         <li>
           <NavLink
-            to="/dashboard/all-users"
+            to="/dashboard/manage-users"
             className={({ isActive }) =>
               isActive
                 ? "dashActive flex items-center justify-start gap-4"
                 : "dashDefault flex items-center justify-start gap-4"
             }>
-            <FaUsers className="w-14 h-6 md:mx-0 mx-auto" title="ALL USERS"/>
-            <span className="text-base font-semibold md:block hidden whitespace-nowrap">ALL USERS</span>
+            <FaUsers className="w-14 h-6 md:mx-0 mx-auto" title="ALL USERS" />
+            <span className="text-base font-semibold md:block hidden whitespace-nowrap">
+              ALL USERS
+            </span>
           </NavLink>
         </li>
       </ul>

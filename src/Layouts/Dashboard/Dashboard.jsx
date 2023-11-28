@@ -1,8 +1,11 @@
 import { Outlet } from "react-router-dom";
 import AdminNavItems from "../../Pages/Shared/DashNavItems/AdminNavItems";
 import GeneralNavItems from "../../Pages/Shared/DashNavItems/GeneralNavItems";
+import UserNavItems from "../../Pages/Shared/DashNavItems/UserNavItems";
 
 const Dashboard = () => {
+  const admin = false;
+
   return (
     <div className=" flex ">
       {/* Dashboard */}
@@ -23,7 +26,7 @@ const Dashboard = () => {
           </div>
           {/* Nav items  */}
           <div className="mt-16  md:ml-2 w-full">
-            <AdminNavItems />
+            {admin ? <AdminNavItems /> : <UserNavItems />}
             <hr className="h-[0.1px] w-4/6 mx-auto my-7 bg-white" />
             <GeneralNavItems />
           </div>

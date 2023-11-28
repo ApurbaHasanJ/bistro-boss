@@ -12,7 +12,7 @@ const AddItems = () => {
     console.log(data);
   };
   return (
-    <section className="mt-12 ">
+    <section className="min-h-screen my-container mt-8">
       <SectionTitle title={"ADD AN ITEM"} subTitle={"---What's new?---"} />
 
       <div className="py-20 md:mx-28 mx-12">

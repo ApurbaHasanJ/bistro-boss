@@ -1,13 +1,9 @@
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
-import { MdDone } from "react-icons/md";
 
-const ManageBookings = () => {
+const PaymentHistory = () => {
   return (
-    <section className="my-container mt-8 min-h-screen bg-[#F6F6F6]">
-      <SectionTitle
-        title={"MANAGE ALL BOOKINGS"}
-        subTitle={"---At A Glance!---"}
-      />
+    <div className="my-container pt-8 min-h-screen bg-[#F6F6F6]">
+      <SectionTitle title={"PAYMENT HISTORY"} subTitle={"---At A Glance!---"} />
 
       {/* table */}
       <div className="md:mx-28 mx-12 mt-20">
@@ -19,22 +15,16 @@ const ManageBookings = () => {
             <thead className="text-xs  text-white uppercase bg-[#D1A054]  ">
               <tr>
                 <th scope="col" className="p-8">
-                  User Email
+                  Email
                 </th>
                 <th scope="col" className="px-6 py-3">
-                  Phone
+                  Category
                 </th>
                 <th scope="col" className="px-6 py-3">
-                  Booking Date
+                  Total Price
                 </th>
                 <th scope="col" className="px-6 py-3">
-                  Booking Time
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Activity
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  ACTION
+                  Payment Date
                 </th>
               </tr>
             </thead>
@@ -44,74 +34,50 @@ const ManageBookings = () => {
                 <th
                   scope="row"
                   className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                  +8801884167824
+                  Food Order
                 </th>
                 <th
                   scope="row"
                   className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                  12/12/20
+                  $71.5
                 </th>
-                <td className="px-6 py-4">10:30am</td>
-                <td className="px-6 py-4 ">
-                  <div className="text-[#D1A054] font-semibold">Pending</div>
-                </td>
-                <td className="flex items-center px-6 py-4">
-                  <div className="h-full flex justify-center items-center my-3">
-                    <MdDone className="bg-[#80E2B7] p-1 rounded-full text-white text-3xl" />
-                  </div>
-                </td>
+                <td className="px-6 py-4">12/12/20 10:30am</td>
               </tr>
               <tr className="bg-white border-b py-10 hover:bg-gray-50 ">
                 <td className="w-4 p-8">apurbahasanj@gmail.com</td>
                 <th
                   scope="row"
                   className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                  +8801884167824
+                  Food Order
                 </th>
                 <th
                   scope="row"
                   className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                  12/12/20
+                  $71.5
                 </th>
 
-                <td className="px-6 py-4">10:30am</td>
-                <td className="px-6 py-4 ">
-                  <div className="text-[#D1A054] font-semibold">Pending</div>
-                </td>
-                <td className="flex items-center px-6 py-4">
-                  <div className="h-full flex justify-center items-center my-3">
-                    <MdDone className="bg-[#80E2B7] p-1 rounded-full text-white text-3xl" />
-                  </div>
-                </td>
+                <td className="px-6 py-4">12/12/20 10:30am</td>
               </tr>
               <tr className="bg-white border-b py-10 hover:bg-gray-50 ">
                 <td className="w-4 p-8">apurbahasanj@gmail.com</td>
                 <th
                   scope="row"
                   className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                  +8801884167824
+                  Food Order
                 </th>
                 <th
                   scope="row"
                   className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                  12/12/20
+                  $71.5
                 </th>
-                <td className="px-6 py-4">10:30am</td>
-                <td className="px-6 py-4 ">
-                  <div className="text-[#D1A054] font-semibold">Pending</div>
-                </td>
-                <td className="flex items-center px-6 py-4">
-                  <div className="h-full flex justify-center items-center my-3">
-                    <MdDone className="bg-[#80E2B7] p-1 rounded-full text-white text-3xl" />
-                  </div>
-                </td>
+                <td className="px-6 py-4">12/12/20 10:30am</td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
-export default ManageBookings;
+export default PaymentHistory;

@@ -1,11 +1,11 @@
-import { TbEdit } from "react-icons/tb";
-import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import { MdDeleteForever } from "react-icons/md";
+import SectionTitle from "../../../components/SectionTitle/SectionTitle";
+import { FaUserEdit } from "react-icons/fa";
 
-const ManageItems = () => {
+const ManageUsers = () => {
   return (
-    <section className="pt-12 min-h-screen bg-[#F6F6F6]">
-      <SectionTitle title={"MANAGE ALL ITEMS"} subTitle={"---Hurry Up!---"} />
+    <section className="my-container mt-8 min-h-screen bg-[#F6F6F6]">
+      <SectionTitle title={"MANAGE ALL USERS"} subTitle={"---How Many!?---"} />
 
       {/* table */}
       <div className="md:mx-28 mx-12 mt-20">
@@ -18,17 +18,14 @@ const ManageItems = () => {
               <tr>
                 <th scope="col" className="p-8"></th>
                 <th scope="col" className="px-6 py-3">
-                  ITEM IMAGE
+                  Name
                 </th>
                 <th scope="col" className="px-6 py-3">
-                  ITEM NAME
+                  Email
                 </th>
 
                 <th scope="col" className="px-6 py-3">
-                  PRICE
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  ACTION
+                  Role
                 </th>
                 <th scope="col" className="px-6 py-3">
                   ACTION
@@ -41,17 +38,15 @@ const ManageItems = () => {
                 <th
                   scope="row"
                   className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                  <img src="#" alt="" />
+                  Apurba
                 </th>
                 <th
                   scope="row"
                   className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                  Apple MacBook Pro 17
+                  apurbahasanj@gmail.com
                 </th>
-
-                <td className="px-6 py-4">$2999</td>
-                <td className="px-6 py-4">
-                  <TbEdit className="bg-[#D1A054] hover:bg-[#c8841f] p-1 rounded-md text-white text-[32px]" />
+                <td className="px-6 py-4 ">
+                  <FaUserEdit className="bg-[#D1A054] hover:bg-[#c8841f] p-1 rounded-md text-white text-[32px]" />
                 </td>
                 <td className="flex items-center px-6 py-4">
                   <MdDeleteForever className="bg-red-600 hover:bg-red-700  p-1 rounded-md text-white text-[32px]" />
@@ -62,17 +57,16 @@ const ManageItems = () => {
                 <th
                   scope="row"
                   className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                  <img src="#" alt="" />
+                  Apurba
                 </th>
                 <th
                   scope="row"
                   className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                  Microsoft Surface Pro
+                  apurbahasanj@gmail.com
                 </th>
 
-                <td className="px-6 py-4">$1999</td>
                 <td className="px-6 py-4 ">
-                  <TbEdit className="bg-[#D1A054] hover:bg-[#c8841f] p-1 rounded-md text-white text-[32px]" />
+                  <FaUserEdit className="bg-[#D1A054] hover:bg-[#c8841f] p-1 rounded-md text-white text-[32px]" />
                 </td>
                 <td className="flex items-center px-6 py-4">
                   <MdDeleteForever className="bg-red-600 hover:bg-red-700 p-1 rounded-md text-white text-[32px]" />
@@ -83,17 +77,16 @@ const ManageItems = () => {
                 <th
                   scope="row"
                   className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                  <img src="#" alt="" />
+                  Apurba
                 </th>
                 <th
                   scope="row"
                   className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                  Magic Mouse 2
+                  apurbahasanj@gmail.com
                 </th>
 
-                <td className="px-6 py-4">$99</td>
                 <td className="px-6 py-4 ">
-                  <TbEdit className="bg-[#D1A054] hover:bg-[#c8841f] p-1 rounded-md text-white text-[32px]" />
+                  <FaUserEdit className="bg-[#D1A054] hover:bg-[#c8841f] p-1 rounded-md text-white text-[32px]" />
                 </td>
                 <td className="flex items-center px-6 py-4">
                   <MdDeleteForever className="bg-red-600 hover:bg-red-700 p-1 rounded-md text-white text-[32px]" />
@@ -107,4 +100,4 @@ const ManageItems = () => {
   );
 };
 
-export default ManageItems;
+export default ManageUsers;

@@ -3,8 +3,8 @@ import { SiCodechef } from "react-icons/si";
 
 const AdminHome = () => {
   return (
-    <div className="my-container min-h-screen ">
-      <h2 className="md:text-3xl text-2xl font-semibold mt-12 font-[Cinzel] whitespace-nowrap">
+    <div className="my-container min-h-screen  mt-8">
+      <h2 className="md:text-3xl text-2xl font-semibold font-[Cinzel] whitespace-nowrap">
         HI, WELCOME BACK!
       </h2>
       <div className="grid gap-5 md:grid-cols-4 sm:grid-cols-2 justify-center text-white mt-6 items-center">
