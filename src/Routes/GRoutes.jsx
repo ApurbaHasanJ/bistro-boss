@@ -17,6 +17,7 @@ import UpdateItem from "../Pages/Dashboard/AdminPages/UpdateItem";
 import ManageUsers from "../Pages/Dashboard/AdminPages/ManageUsers";
 import Reservation from "../Pages/Dashboard/UserPages/Reservation";
 import PaymentHistory from "../Pages/Dashboard/UserPages/PaymentHistory";
+import MyCart from "../Pages/Dashboard/UserPages/MyCart";
 
 export const router = createBrowserRouter([
   {
@@ -90,6 +91,10 @@ export const router = createBrowserRouter([
       {
         path: "payment-history",
         element: <PaymentHistory />,
+      },
+      {
+        path: "my-cart",
+        element: <MyCart />,
       },
     ],
   },

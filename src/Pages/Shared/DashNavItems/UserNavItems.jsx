@@ -62,7 +62,7 @@ const UserNavItems = () => {
         </li>
         <li>
           <NavLink
-            to="/dashboard/my-carts"
+            to="/dashboard/my-cart"
             className={({ isActive }) =>
               isActive
                 ? "dashActive flex items-center justify-start gap-4"
