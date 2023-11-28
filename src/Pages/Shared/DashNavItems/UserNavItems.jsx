@@ -1,11 +1,11 @@
 import {
   FaCalendarAlt,
   FaCalendarCheck,
-  FaCommentAlt,
   FaHome,
   FaWallet,
 } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
+import { MdReviews } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 
 const UserNavItems = () => {
@@ -79,23 +79,6 @@ const UserNavItems = () => {
         </li>
         <li>
           <NavLink
-            to="/dashboard/customer-feedback"
-            className={({ isActive }) =>
-              isActive
-                ? "dashActive flex items-center justify-start gap-4"
-                : "dashDefault flex items-center justify-start gap-4"
-            }>
-            <FaCommentAlt
-              className="w-14 h-6 md:mx-0 mx-auto"
-              title="ADD REVIEWS"
-            />
-            <span className="text-base font-semibold md:block hidden whitespace-nowrap">
-              ADD REVIEWS
-            </span>
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
             to="/dashboard/my-bookings"
             className={({ isActive }) =>
               isActive
@@ -108,6 +91,23 @@ const UserNavItems = () => {
             />
             <span className="text-base font-semibold md:block hidden whitespace-nowrap">
               MY BOOKINGS
+            </span>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/dashboard/add-review"
+            className={({ isActive }) =>
+              isActive
+                ? "dashActive flex items-center justify-start gap-4"
+                : "dashDefault flex items-center justify-start gap-4"
+            }>
+            <MdReviews
+              className="w-14 h-6 md:mx-0 mx-auto"
+              title="ADD REVIEWS"
+            />
+            <span className="text-base font-semibold md:block hidden whitespace-nowrap">
+              ADD REVIEWS
             </span>
           </NavLink>
         </li>

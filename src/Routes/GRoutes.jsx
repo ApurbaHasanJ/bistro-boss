@@ -18,6 +18,8 @@ import ManageUsers from "../Pages/Dashboard/AdminPages/ManageUsers";
 import Reservation from "../Pages/Dashboard/UserPages/Reservation";
 import PaymentHistory from "../Pages/Dashboard/UserPages/PaymentHistory";
 import MyCart from "../Pages/Dashboard/UserPages/MyCart";
+import MyBookings from "../Pages/Dashboard/UserPages/MyBookings";
+import AddReview from "../Pages/Dashboard/UserPages/AddReview";
 
 export const router = createBrowserRouter([
   {
@@ -95,6 +97,14 @@ export const router = createBrowserRouter([
       {
         path: "my-cart",
         element: <MyCart />,
+      },
+      {
+        path: "my-bookings",
+        element: <MyBookings />,
+      },
+      {
+        path: "add-review",
+        element: <AddReview />,
       },
     ],
   },

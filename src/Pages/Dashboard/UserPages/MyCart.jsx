@@ -4,7 +4,7 @@ import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 const MyCart = () => {
   return (
     <div className="pt-12 min-h-screen bg-[#F6F6F6]">
-      <SectionTitle title={"MANAGE ALL ITEMS"} subTitle={"---Hurry Up!---"} />
+      <SectionTitle title={"WANNA ADD MORE?"} subTitle={"---My Cart!---"} />
 
       {/* table */}
       <div className="md:mx-28 mx-12 mt-20">
@@ -23,7 +23,7 @@ const MyCart = () => {
           <table className="w-full text-sm text-left rtl:text-right rounded-lg text-gray-500 ">
             <thead className="text-xs  text-white uppercase bg-[#D1A054]  ">
               <tr>
-                <th scope="col" className="p-8"></th>
+                <th scope="col" className="p-8 text-base">#</th>
                 <th scope="col" className="px-6 py-3">
                   ITEM IMAGE
                 </th>

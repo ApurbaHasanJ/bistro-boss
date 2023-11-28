@@ -12,7 +12,7 @@ const UpdateItem = () => {
     console.log(data);
   };
   return (
-    <section className="mt-12 ">
+    <div className="mt-12 ">
       <SectionTitle title={"UPDATE ITEM"} subTitle={"---Wanna Change?---"} />
 
       <div className="py-20 md:mx-28 mx-12">
@@ -83,7 +83,7 @@ const UpdateItem = () => {
                   </label>
                   <textarea
                     name="recipe details"
-                    {...register("recipe details")}
+                    {...register("recipeDetails")}
                     required
                     placeholder="Your recipe details"
                     className="textarea hover:shadow-md "
@@ -111,7 +111,7 @@ const UpdateItem = () => {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
