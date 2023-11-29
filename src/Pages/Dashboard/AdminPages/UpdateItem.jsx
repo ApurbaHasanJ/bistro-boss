@@ -15,7 +15,7 @@ const UpdateItem = () => {
     <div className="mt-12 ">
       <SectionTitle title={"UPDATE ITEM"} subTitle={"---Wanna Change?---"} />
 
-      <div className="py-20 md:mx-28 mx-12">
+      <div className="py-20 my-container">
         <div
           className="my-container shadow-xl"
           style={{

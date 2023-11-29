@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .my-container {
-  @apply mx-auto p-3 md:p-6 sm:max-w-xl md:max-w-full lg:max-w-screen-xl w-full;
+  @apply mx-auto p-3 md:p-6 w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl ;
 }
 
 .btn-card {
@@ -42,6 +42,41 @@
 .dashDefault {
   @apply font-semibold tracking-wide text-[#151515] hover:text-gray-500 transition-colors duration-300;
 }
+
+
+/* Scroll bar */
+/* For WebKit based browsers (Chrome, Safari) */
+/* Set the width and track background color */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #ffffff;
+}
+
+/* Style the scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  background-color: #D1A054;
+  border-radius: 3.5px; /* Half of the width to make it rounded */
+}
+
+/* Add a pseudo-element for the rounded corners of the thumb */
+::-webkit-scrollbar-thumb:hover::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  left: -2px;
+  right: -2px;
+  background-color: #FDE8C0;
+  border-radius: 5px; 
+}
+
+
+
+/* Swiper JS*/
 
 .swiper {
   width: 100%;

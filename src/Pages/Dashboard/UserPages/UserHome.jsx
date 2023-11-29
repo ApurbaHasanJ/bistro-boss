@@ -7,7 +7,7 @@ const UserHome = () => {
       <h2 className="md:text-3xl text-2xl font-semibold font-[Cinzel] whitespace-nowrap">
         HI, WELCOME BACK!
       </h2>
-      <div className="grid gap-5 md:grid-cols-3 sm:grid-cols-2 justify-center text-white mt-6 items-center">
+      <div className="grid gap-5 md:grid-cols-3 grid-cols-2 justify-center text-white mt-6 items-center">
         <div className="from-[#BB34F5] text-white bg-gradient-to-r w-full h-[150px] px-7 flex  gap-4 justify-center items-center to-[#FCDBFF]  rounded-lg">
           <FaWallet className="w-12 h-12 md:mx-0 mx-auto" title="Wallet" />
           <div>
@@ -32,7 +32,7 @@ const UserHome = () => {
       </div>
 
       {/* user profile */}
-      <div className="grid md:grid-cols-2 items-center justify-start mt-8 font-[Cinzel]">
+      <div className="grid sm:grid-cols-2 items-center justify-center mt-8 font-[Cinzel]">
         <div className="bg-[#FFEDD5] grid justify-center items-center p-10 border-[#D1A054] border-r-2">
           <div className="bg-white border-2 border-[#D1A054] mx-auto w-[200px] h-[200px] rounded-full"></div>
           <p className="mt-11 text-center font-semibold md:text-3xl text-2xl font-[Cinzel] whitespace-nowrap">
@@ -41,7 +41,7 @@ const UserHome = () => {
         </div>
         {/* user activities */}
         <div className="bg-[#FEF9C3] h-full p-10 border-[#D1A054] border-l-2">
-          <div className="pl-20">
+          <div className="md:pl-20 pl-7">
             <h2 className="md:text-3xl text-2xl  font-semibold  font-[Cinzel] whitespace-nowrap">
               Your Activities
             </h2>

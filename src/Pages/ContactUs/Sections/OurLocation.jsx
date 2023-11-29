@@ -9,7 +9,7 @@ const OurLocation = () => {
         <section className="mt-24 my-container">
         <SectionTitle subTitle={"---Visit Us---"} title={"OUR LOCATION"} />
 
-        <div className="grid grid-cols-3 gap-5 mt-5">
+        <div className="grid md:grid-cols-3 sm:grid-cols-2 gap-5 mt-16">
           {/* First */}
           <div className="border border-gray-100 shadow ">
             <div className="bg-[#D1A054] py-5">

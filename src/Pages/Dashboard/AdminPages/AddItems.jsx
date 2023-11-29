@@ -12,10 +12,10 @@ const AddItems = () => {
     console.log(data);
   };
   return (
-    <section className="min-h-screen my-container mt-8">
+    <section className="min-h-screen  mt-12">
       <SectionTitle title={"ADD AN ITEM"} subTitle={"---What's new?---"} />
 
-      <div className="py-20 md:mx-28 mx-12">
+      <div className="mt-20 my-container">
         <div
           className="my-container shadow-xl"
           style={{
@@ -66,6 +66,7 @@ const AddItems = () => {
                       <span className="text-red-600 text-xl">*</span>
                     </label>
                     <input
+                    type="number"
                       id="price"
                       name="price"
                       {...register("price")}

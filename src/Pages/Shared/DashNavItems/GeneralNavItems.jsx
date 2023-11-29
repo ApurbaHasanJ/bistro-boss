@@ -16,7 +16,7 @@ const GeneralNavItems = () => {
                 : "dashDefault flex items-center justify-start gap-4"
             }>
             <FaHome className="w-14 h-6 md:mx-0 mx-auto" title="HOME" />
-            <span className="text-base font-semibold md:block hidden whitespace-nowrap">
+            <span className="text-base font-semibold lg:block hidden whitespace-nowrap">
               HOME
             </span>
           </NavLink>
@@ -30,7 +30,7 @@ const GeneralNavItems = () => {
                 : "dashDefault flex items-center justify-start gap-4"
             }>
             <HiOutlineMenu className="w-14 h-7 md:mx-0 mx-auto" title="MENU" />
-            <span className="text-base font-semibold md:block hidden whitespace-nowrap">
+            <span className="text-base font-semibold lg:block hidden whitespace-nowrap">
               MENU
             </span>
           </NavLink>
@@ -43,8 +43,8 @@ const GeneralNavItems = () => {
                 ? "dashActive flex items-center justify-start gap-4"
                 : "dashDefault flex items-center justify-start gap-4"
             }>
-            <MdShoppingBag className="w-14 h-6 md:mx-0 mx-auto" title="SHOP" />
-            <span className="text-base font-semibold md:block hidden whitespace-nowrap">
+            <MdShoppingBag className="w-14 h-7 md:mx-0 mx-auto" title="SHOP" />
+            <span className="text-base font-semibold lg:block hidden whitespace-nowrap">
               SHOP
             </span>
           </NavLink>
@@ -57,8 +57,8 @@ const GeneralNavItems = () => {
                 ? "dashActive flex items-center justify-start gap-4"
                 : "dashDefault flex items-center justify-start gap-4"
             }>
-            <MdEmail className="w-14 h-6 md:mx-0 mx-auto" title="CONTACT" />
-            <span className="text-base font-semibold md:block hidden whitespace-nowrap">
+            <MdEmail className="w-14 h-7 md:mx-0 mx-auto" title="CONTACT" />
+            <span className="text-base font-semibold lg:block hidden whitespace-nowrap">
               CONTACT
             </span>
           </NavLink>

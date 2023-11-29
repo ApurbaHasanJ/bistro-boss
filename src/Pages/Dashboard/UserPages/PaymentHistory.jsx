@@ -2,11 +2,11 @@ import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 
 const PaymentHistory = () => {
   return (
-    <div className="my-container pt-8 min-h-screen bg-[#F6F6F6]">
+    <div className=" pt-12 min-h-screen bg-[#F6F6F6]">
       <SectionTitle title={"PAYMENT HISTORY"} subTitle={"---At A Glance!---"} />
 
       {/* table */}
-      <div className="md:mx-28 mx-12 mt-20">
+      <div className="mt-20 my-container">
         <h2 className="md:text-2xl mb-3 uppercase text-xl font-semibold font-[Cinzel] whitespace-nowrap">
           Total Items: 6
         </h2>

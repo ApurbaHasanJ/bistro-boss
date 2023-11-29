@@ -10,8 +10,8 @@ const MyBookings = () => {
       />
 
       {/* table */}
-      <div className="md:mx-28 mx-12 mt-20">
-        <div className="flex items-center justify-between">
+      <div className="my-container mt-20">
+        <div className="md:flex grid items-center justify-between">
           <h2 className="md:text-2xl mb-3 uppercase text-xl font-semibold font-[Cinzel] whitespace-nowrap">
             Total Items: 6
           </h2>

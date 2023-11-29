@@ -15,13 +15,13 @@ const AddReview = () => {
     console.log(data);
   };
   return (
-    <div className="mt-12 ">
+    <div className="mt-12 my-container">
       <SectionTitle
         title={"GIVE A REVIEW..."}
         subTitle={"---Sharing is Caring!!!---"}
       />
 
-      <div className="py-20 md:mx-28 mx-12">
+      <div className="py-20 ">
         <div
           className="my-container shadow-xl"
           style={{

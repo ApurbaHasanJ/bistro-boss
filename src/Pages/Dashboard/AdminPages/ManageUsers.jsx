@@ -4,11 +4,11 @@ import { FaUserEdit } from "react-icons/fa";
 
 const ManageUsers = () => {
   return (
-    <section className="my-container mt-8 min-h-screen bg-[#F6F6F6]">
+    <section className=" pt-12 min-h-screen bg-[#F6F6F6]">
       <SectionTitle title={"MANAGE ALL USERS"} subTitle={"---How Many!?---"} />
 
       {/* table */}
-      <div className="md:mx-28 mx-12 mt-20">
+      <div className="my-container mt-20">
         <h2 className="md:text-2xl mb-3 uppercase text-xl font-semibold font-[Cinzel] whitespace-nowrap">
           Total Items: 6
         </h2>

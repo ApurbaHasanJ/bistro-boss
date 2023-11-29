@@ -2,8 +2,8 @@ import { Outlet, useLocation } from "react-router-dom";
 import Footer from "../Pages/Shared/Footer/Footer";
 import Navbar from "../Pages/Shared/Navbar/Navbar";
 import useMenu from "../hooks/useMenu";
-import Loader from "../Pages/Shared/Loader/Loader";
 import useBanner from "../hooks/useBanner";
+import LandingPage from "../Pages/LandingPage";
 
 const Main = () => {
   const [data, loading] = useMenu();
@@ -18,7 +18,7 @@ const Main = () => {
     <>
       {loading || BannersLoading ? (
         <div className="h-screen flex justify-center items-center">
-          <Loader />
+          <LandingPage />
         </div>
       ) : (
         <div>
