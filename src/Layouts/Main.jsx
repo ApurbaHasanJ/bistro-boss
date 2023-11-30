@@ -8,7 +8,7 @@ import LandingPage from "../Pages/LandingPage";
 const Main = () => {
   const [data, loading] = useMenu();
   const [banners, BannersLoading] = useBanner();
-  console.log(data, banners);
+  // console.log( );
   const location = useLocation();
   // console.log(location);
   const withOutHeaderFooter =

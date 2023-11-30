@@ -7,7 +7,7 @@ const useBanner = () => {
     fetch("http://localhost:5000/banners")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setBanners(data);
         setLoading(false);
       });

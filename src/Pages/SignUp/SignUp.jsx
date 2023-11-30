@@ -1,24 +1,64 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import SocialSignup from "../Shared/SocialSignup/SocialSignup";
+import { AuthContext } from "../../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
   // show password
   const [show, setShow] = useState(false);
 
+  // get auth Context
+  const { createUser, userProfile } = useContext(AuthContext);
+
   const {
     register,
     handleSubmit,
-    // formState: { errors },
+    formState: { errors },
   } = useForm();
+
   const onSubmit = (data) => {
-    console.log(data);
+    const { name, email, password } = data;
+    // console.log(name, email, password);
+
+    // create user functions
+    createUser(email, password)
+      .then((userCredential) => {
+        userProfile(name)
+          .then(() => {
+            const loggedUser = userCredential.user;
+            console.log(loggedUser);
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Sign Up Successfully",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          })
+          .catch((error) => {
+            console.log(error);
+            Swal.fire({
+              icon: "error",
+              title: "Error updating profile",
+              text: "Please try again.",
+            });
+          });
+      })
+      .catch((error) => {
+        console.log(error);
+        Swal.fire({
+          icon: "error",
+          title: "Error creating user",
+          text: "Please try again.",
+        });
+      });
   };
 
   return (
     <div
-      className="py-20 bg-transparent z-20"
+      className="py-20 bg-transparent px-3 z-20"
       style={{
         backgroundImage: `url('https://i.postimg.cc/tg8rPHSH/authentication.png')`,
       }}>
@@ -47,11 +87,20 @@ const SignUp = () => {
                 <input
                   type="text"
                   name="name"
-                  {...register("name")}
-                  required
-                  placeholder="Your email"
+                  {...register("name", {
+                    required: "Name is required",
+                    pattern: /^[A-Za-z\s]+$/i,
+                  })}
+                  placeholder="Your name"
                   className="input hover:shadow-md input-bordered"
+                  aria-invalid={errors.name ? "true" : "false"}
                 />
+                {errors.name && (
+                  <p role="alert" className="text-red-500 mt-2">
+                    {errors.name?.message ||
+                      "Please enter a valid name using only letters."}
+                  </p>
+                )}
               </div>
               <div className="form-control mb-3">
                 <label className="label text-base font-medium text-slate-900 ">
@@ -60,11 +109,18 @@ const SignUp = () => {
                 <input
                   type="email"
                   name="email"
-                  {...register("email")}
-                  required
+                  {...register("email", {
+                    required: "Email Address is required",
+                  })}
                   placeholder="Your email"
                   className="input hover:shadow-md input-bordered"
+                  aria-invalid={errors.email ? "true" : "false"}
                 />
+                {errors.email && (
+                  <p role="alert" className="text-red-500 mt-2">
+                    {errors.email?.message}
+                  </p>
+                )}
               </div>
               <div className="form-control">
                 <label className="label text-base font-medium text-slate-900 ">
@@ -74,11 +130,21 @@ const SignUp = () => {
                   type={show ? "text" : "password"}
                   id="password"
                   name="password"
-                  {...register("password")}
+                  {...register("password", {
+                    required: "Password is required",
+                    minLength: 6,
+                    pattern: /^(?=.*[0-9])(?=.*[^a-zA-Z0-9])(?=.*[A-Z]).{6,}$/i,
+                  })}
                   className="input hover:shadow-md input-bordered"
-                  required
+                  aria-invalid={errors.password ? "true" : "false"}
                   placeholder="Password"
                 />
+                {errors.password && (
+                  <p role="alert" className="text-red-500 mt-2">
+                    {errors.password?.message ||
+                      "Password must be at least 6 characters long, contain at least one number, one special character, and one uppercase letter."}
+                  </p>
+                )}
               </div>
               <div className="form-control  my-3">
                 <div className="flex items-center  mb-6">
@@ -120,7 +186,7 @@ const SignUp = () => {
               <div className="border-b h-1 w-full border-gray-300"></div>
             </div>
             <div className="form-control  mt-4">
-              <SocialSignup/>
+              <SocialSignup />
             </div>
           </div>
         </div>

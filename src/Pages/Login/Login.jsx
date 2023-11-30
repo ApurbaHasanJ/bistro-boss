@@ -1,57 +1,58 @@
-import { useRef } from "react";
 import { useContext } from "react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import {
-  loadCaptchaEnginge,
-  LoadCanvasTemplate,
-  validateCaptcha,
-} from "react-simple-captcha";
-import { AuthContext } from "../../Layouts/AuthProvider";
+
+// react google recaptcha
+import ReCAPTCHA from "react-google-recaptcha";
 import SocialSignup from "../Shared/SocialSignup/SocialSignup";
+import { AuthContext } from "../../Providers/AuthProvider";
+import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 const Login = () => {
-    const captchaRef = useRef(null)
-    const [disabled, setDisabled] = useState(true)
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const [disabled, setDisabled] = useState(true);
 
-    const {signIn} = useContext(AuthContext)
+  const { signIn } = useContext(AuthContext);
 
-
-
-
-// show password
+  // show password
   const [show, setShow] = useState(false);
 
-  // login controls
-  const handleLogin = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const email = form.email.value;
-    const password = form.password.value;
-    // console.log(email, password);
-    signIn(email, password)
-    .then(result =>{
-      const user = result.user;
-      console.log(user);
-    })
+  // On change re captcha
+  const onChange = (value) => {
+    console.log("Captcha value", value);
+    setDisabled(!disabled);
   };
 
-
-  const handleValidateCaptcha =()=>{
-    const user_captcha_value = captchaRef.current.value
-    // console.log(value);
-    if(validateCaptcha(user_captcha_value)==true){
-setDisabled(false)
-    }
-    else{
-        setDisabled(true)
-    }
-    
-  }
-
-  useEffect(() => {
-    loadCaptchaEnginge(6);
-  }, []);
+  // login controls
+  const onSubmit = (data) => {
+    const { email, password } = data;
+    console.log(email, password);
+    signIn(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Sign in Successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+        Swal.fire({
+          icon: "error",
+          title: "Error login user",
+          text: "Please try again.",
+        });
+      });
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -80,7 +81,7 @@ setDisabled(false)
             />
           </div>
           <div className=" p-10 mx-3 lg:mx-0 rounded-lg">
-            <form onSubmit={handleLogin}>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <div className="form-control mb-3">
                 <label className="label text-base font-medium text-slate-900 ">
                   <span className="label-text">Email</span>
@@ -88,10 +89,18 @@ setDisabled(false)
                 <input
                   type="email"
                   name="email"
-                  required
+                  {...register("email", {
+                    required: "Email Address is required",
+                  })}
                   placeholder="Your email"
                   className="input hover:shadow-md input-bordered"
+                  aria-invalid={errors.email ? "true" : "false"}
                 />
+                {errors.email && (
+                  <p role="alert" className="text-red-500 mt-2">
+                    {errors.email?.message}
+                  </p>
+                )}
               </div>
               <div className="form-control">
                 <label className="label text-base font-medium text-slate-900 ">
@@ -101,10 +110,21 @@ setDisabled(false)
                   type={show ? "text" : "password"}
                   id="password"
                   name="password"
+                  {...register("password", {
+                    required: "Password is required",
+                    minLength: 6,
+                    pattern: /^(?=.*[0-9])(?=.*[^a-zA-Z0-9])(?=.*[A-Z]).{6,}$/i,
+                  })}
                   className="input hover:shadow-md input-bordered"
-                  required
+                  aria-invalid={errors.password ? "true" : "false"}
                   placeholder="Password"
                 />
+                {errors.password && (
+                  <p role="alert" className="text-red-500 mt-2">
+                    {errors.password?.message ||
+                      "Password must be at least 6 characters long, contain at least one number, one special character, and one uppercase letter."}
+                  </p>
+                )}
               </div>
               <div className="form-control  my-3">
                 <div className="flex items-center  mb-6">
@@ -117,34 +137,21 @@ setDisabled(false)
                   />
                   <label
                     htmlFor="showPassword"
-                    className="ml-2 text-base font-medium text-slate-900 "
-                  >
+                    className="ml-2 text-base font-medium text-slate-900 ">
                     Show password
                   </label>
                 </div>
-                <div className="form-control mb-3">
-                  <LoadCanvasTemplate />
-                </div>
-                <div className="form-control mb-3">
-                  <input
-                    type="text"
-                    name="captcha"
-                    ref={captchaRef}
-
-                    required
-                    placeholder="Type here..."
-                    className="input hover:shadow-md input-bordered"
+                <div className="form-control">
+                  <ReCAPTCHA
+                    sitekey={import.meta.env.VITE_RECAP}
+                    onChange={onChange}
                   />
                 </div>
-                
-                <button
-                onClick={handleValidateCaptcha}
-                className="btn  btn-outline w-2/12 btn-xs text-[#d1a054b3] border-[#d1a054b3] hover:bg-[#d1a054b3] hover:border-[#d1a054b3]">Validate</button>
               </div>
 
-              <div className="form-control mt-8">
+              <div className="form-control mt-5">
                 <input
-                disabled={disabled}
+                  disabled={disabled}
                   type="submit"
                   value="Sign in"
                   className="btn rounded-md border-none text-white bg-[#d1a054b3] hover:bg-[#ec9f2db3]"
@@ -165,7 +172,7 @@ setDisabled(false)
               <div className="border-b h-1 w-full border-gray-300"></div>
             </div>
             <div className="form-control  mt-4">
-              <SocialSignup/>
+              <SocialSignup />
             </div>
           </div>
         </div>
