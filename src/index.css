@@ -28,7 +28,7 @@
 }
 
 .active {
-  @apply font-semibold tracking-wide text-[#ffbc21]  transition-colors duration-300;
+  @apply font-semibold tracking-wide text-[#EEFF25]  transition-colors duration-300;
 }
 
 .default {

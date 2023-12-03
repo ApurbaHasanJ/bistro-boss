@@ -1,6 +1,41 @@
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../../Providers/AuthProvider";
+import { useContext } from "react";
+import { FaUser } from "react-icons/fa";
+import { useState } from "react";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
+  const { loading, user, logOut } = useContext(AuthContext);
+  const [showLogOut, setShowLogOut] = useState(false);
+  console.log(user);
+
+  const handleShowLogOut = () => {
+    setShowLogOut(!showLogOut);
+  };
+
+  // Handle Logout
+  const handleLogout = () => {
+    logOut()
+      .then(() => {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Sign Out Successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((err) => {
+        console.log(err.message);
+        Swal.fire({
+          icon: "error",
+          title: "Error logout user",
+          text: "Please try again.",
+        });
+      });
+  };
+
   const navItems = (
     <>
       <li>
@@ -38,20 +73,52 @@ const Navbar = () => {
           OUR SHOP
         </NavLink>
       </li>
-      <li>
-        <NavLink
-          to="/register"
-          className={({ isActive }) => (isActive ? "active" : "default")}>
-          SIGN UP
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/login"
-          className={({ isActive }) => (isActive ? "active" : "default")}>
-          LOGIN
-        </NavLink>
-      </li>
+      {loading || user ? (
+        <>
+          <li className="relative">
+            <div
+              onClick={handleShowLogOut}
+              className=" border-[#D1A054] rounded-full">
+              {user?.photoURL ? (
+                <img
+                  src={user.photoURL}
+                  className="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500"
+                  alt={user?.displayName}
+                />
+              ) : (
+                <FaUser
+                  className="w-6 h-6 md:mx-0 mx-auto"
+                  title={user?.displayName}
+                />
+              )}
+            </div>
+            {showLogOut && (
+              <button
+                onClick={handleLogout}
+                className="absolute right-0 top-11 font-semibold drop-shadow-2xl px-5 py-2 rounded-lg bg-white text-black shadow-xl hover:shadow-2xl whitespace-nowrap">
+                Log Out
+              </button>
+            )}
+          </li>
+        </>
+      ) : (
+        <>
+          <li>
+            <NavLink
+              to="/register"
+              className={({ isActive }) => (isActive ? "active" : "default")}>
+              SIGN UP
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/login"
+              className={({ isActive }) => (isActive ? "active" : "default")}>
+              LOGIN
+            </NavLink>
+          </li>
+        </>
+      )}
     </>
   );
   return (
@@ -69,7 +136,9 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="navbar-end w-full hidden lg:flex">
-        <ul className="flex gap-4 menu-horizontal px-1">{navItems}</ul>
+        <ul className="flex items-center gap-4 menu-horizontal px-1">
+          {navItems}
+        </ul>
       </div>
       <div className="navbar-end lg:hidden">
         <div className="dropdown">
@@ -88,7 +157,7 @@ const Navbar = () => {
               />
             </svg>
           </label>
-          <ul className=" dropdown-content mt-5 right-0 p-2 shadow bg-opacity-30 grid gap-2 bg-gray-900">
+          <ul className=" dropdown-content mt-5 right-0 p-2 shadow bg-opacity-30 grid gap-2 ite bg-gray-900">
             {navItems}
           </ul>
         </div>

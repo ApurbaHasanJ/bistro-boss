@@ -65,6 +65,26 @@ const AuthProvider = ({ children }) => {
     signInWithPopup(auth, githubProvider);
   };
 
+    // refresh user profile
+    const refreshUserProfile = () => {
+      setLoading(true);
+      const currentUser = auth.currentUser;
+  
+      if (currentUser) {
+        userProfile(currentUser.displayName, currentUser.photoURL)
+          .then(() => {
+            // Assuming the user profile update was successful
+            setLoading(false);
+          })
+          .catch((error) => {
+            console.log(error);
+            setLoading(false);
+          });
+      } else {
+        setLoading(false);
+      }
+    };
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -84,6 +104,7 @@ const AuthProvider = ({ children }) => {
     continueWithGoogle,
     continueWithFacebook,
     continueWithGithub,
+    refreshUserProfile
   };
 
   return (
