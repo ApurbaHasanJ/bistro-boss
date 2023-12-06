@@ -1,19 +1,24 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import LandingPage from "../Pages/LandingPage";
 
 const useMenu = () => {
-  const [data, setData] = useState([]);
-  // console.log(data);
-  const [loading, setLoading] = useState(true);
-  
-  useEffect(() => {
-    fetch("http://localhost:5000/menus")
-      .then((res) => res.json())
-      .then((menus) => {
-        // const popularMenus = menus.filter(item => item.category === 'popular')
-        setData(menus);
-        setLoading(false);
-      });
-  }, []);
+  const {
+    isPending: loading,
+    error,
+    data,
+  } = useQuery({
+    queryKey: ["menu"],
+    queryFn: () =>
+      fetch("http://localhost:5000/menus").then((res) => res.json()),
+  });
+
+  if (loading) {
+    <LandingPage/>;
+  }
+  if (error) {
+    return "An error has occurred: " + error.message;
+  }
+
   return [data, loading];
 };
 

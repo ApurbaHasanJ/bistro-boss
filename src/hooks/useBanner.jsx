@@ -1,18 +1,26 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+
+import Loader from "../Pages/Shared/Loader/Loader";
 
 const useBanner = () => {
-  const [banners, setBanners] = useState([]);
-  const [BannersLoading, setLoading] = useState(true);
-  useEffect(() => {
-    fetch("http://localhost:5000/banners")
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log(data);
-        setBanners(data);
-        setLoading(false);
-      });
-  }, []);
-  return [banners, BannersLoading];
+  const {
+    isPending,
+    error,
+    data: banners = [],
+  } = useQuery({
+    queryKey: ["banners"],
+    queryFn: () =>
+      fetch("http://localhost:5000/banners").then((res) => res.json()),
+  });
+
+  if (isPending) {
+    <Loader />;
+  }
+  if (error) {
+    return "An error has occurred: " + error.message;
+  }
+
+  return [banners, isPending];
 };
 
 export default useBanner;

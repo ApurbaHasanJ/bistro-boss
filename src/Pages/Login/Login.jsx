@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 // react google recaptcha
 import ReCAPTCHA from "react-google-recaptcha";
@@ -15,6 +15,12 @@ const Login = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const from = location?.state?.from?.pathname || "/"
+
   const [disabled, setDisabled] = useState(true);
 
   const { signIn } = useContext(AuthContext);
@@ -43,6 +49,7 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1500,
         });
+        navigate(from, {replace:true})
       })
       .catch((error) => {
         console.log(error);

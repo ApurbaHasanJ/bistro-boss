@@ -11,8 +11,8 @@ import useBanner from "../../../hooks/useBanner";
 
 
 const Banners = () => {
-  const [banners, BannersLoading]= useBanner()
-  console.log(BannersLoading);
+  const [banners]= useBanner()
+  // console.log(isPending);
 
   return (
     <Swiper

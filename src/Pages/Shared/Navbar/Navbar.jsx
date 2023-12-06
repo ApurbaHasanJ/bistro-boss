@@ -4,11 +4,14 @@ import { useContext } from "react";
 import { FaUser } from "react-icons/fa";
 import { useState } from "react";
 import Swal from "sweetalert2";
+import { FaCartShopping } from "react-icons/fa6";
+import useCart from "../../../hooks/useCart";
 
 const Navbar = () => {
   const { loading, user, logOut } = useContext(AuthContext);
   const [showLogOut, setShowLogOut] = useState(false);
-  console.log(user);
+  // console.log(user);
+  const [carts] = useCart()
 
   const handleShowLogOut = () => {
     setShowLogOut(!showLogOut);
@@ -73,6 +76,23 @@ const Navbar = () => {
           OUR SHOP
         </NavLink>
       </li>
+      {user && (
+        <li>
+          <NavLink
+            to="dashboard/my-cart"
+            className={({ isActive }) =>
+              isActive ? "active relative w-10" : "default relative w-10"
+            }>
+            <FaCartShopping
+              className=" text-4xl p-[5px] bg-green-600 rounded-full"
+              title="MY CART"
+            />
+            <span className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-600 border border-white rounded-full -top-2 md:-end-2 ">
+              {carts?.length || 0}
+            </span>
+          </NavLink>
+        </li>
+      )}
       {loading || user ? (
         <>
           <li className="relative">

@@ -20,6 +20,7 @@ import PaymentHistory from "../Pages/Dashboard/UserPages/PaymentHistory";
 import MyCart from "../Pages/Dashboard/UserPages/MyCart";
 import MyBookings from "../Pages/Dashboard/UserPages/MyBookings";
 import AddReview from "../Pages/Dashboard/UserPages/AddReview";
+import PrivateRoutes from "./PrivateRoutes";
 
 export const router = createBrowserRouter([
   {
@@ -55,7 +56,11 @@ export const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <Dashboard />,
+    element: (
+      <PrivateRoutes>
+        <Dashboard />
+      </PrivateRoutes>
+    ),
     errorElement: <ErrorPage />,
     children: [
       {

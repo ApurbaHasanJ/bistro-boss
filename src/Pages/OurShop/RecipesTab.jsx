@@ -20,7 +20,7 @@ const RecipesTab = ({ menus }) => {
     <>
       <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-10">
         {currentItems.map((item) => (
-          <FoodCard key={item._id} menus={item} />
+          <FoodCard key={item._id} menu={item} />
         ))}
       </div>
 

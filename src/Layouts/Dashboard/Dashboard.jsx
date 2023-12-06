@@ -19,7 +19,7 @@ const Dashboard = () => {
 
       {/* sidebar for lg and md */}
       <div className="bg-[#D1A054] md:block hidden pr-2 bg-fixed relative max-w-xs lg:min-w-[260px] w-[90px] h-auto mx-auto overflow-hidden transition-all shadow-2xl shadow-gray-500 pt-14 ">
-        <div className=" ">
+        <div className=" fixed">
           {/* title for large device */}
           <div className=" lg:block hidden md:ml-4 mx-auto">
             <h2 className="md:text-4xl text-2xl font-black font-[Cinzel] whitespace-nowrap">
@@ -30,7 +30,7 @@ const Dashboard = () => {
             </p>
           </div>
           {/* logo for smaller device */}
-          <div className="w-14 mx-auto lg:hidden block drop-shadow-2xl  rounded-2xl bg-white p-2">
+          <div className="w-14 ml-3 lg:hidden block drop-shadow-2xl  rounded-2xl bg-white p-2">
             <img src="https://i.postimg.cc/1tTCNWFH/logo.png" alt="Logo" />
           </div>
           {/* Nav items for lg and md  */}
@@ -76,5 +76,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-
-
