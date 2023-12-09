@@ -10,11 +10,15 @@ import useCart from "../../../hooks/useCart";
 const Navbar = () => {
   const { loading, user, logOut } = useContext(AuthContext);
   const [showLogOut, setShowLogOut] = useState(false);
+  const [showNavbar, setShowNavbar] = useState(false);
   // console.log(user);
-  const [carts] = useCart()
+  const [carts] = useCart();
 
   const handleShowLogOut = () => {
     setShowLogOut(!showLogOut);
+  };
+  const handleShowNavbar = () => {
+    setShowNavbar(!showNavbar);
   };
 
   // Handle Logout
@@ -77,7 +81,7 @@ const Navbar = () => {
         </NavLink>
       </li>
       {user && (
-        <li>
+        <li className="mr-2">
           <NavLink
             to="dashboard/my-cart"
             className={({ isActive }) =>
@@ -87,7 +91,7 @@ const Navbar = () => {
               className=" text-4xl p-[5px] bg-green-600 rounded-full"
               title="MY CART"
             />
-            <span className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-600 border border-white rounded-full -top-2 md:-end-2 ">
+            <span className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-600 border border-white rounded-full -top-2 left-7 md:-end-2 ">
               {carts?.length || 0}
             </span>
           </NavLink>
@@ -98,7 +102,7 @@ const Navbar = () => {
           <li className="relative">
             <div
               onClick={handleShowLogOut}
-              className=" border-[#D1A054] rounded-full">
+              className=" z-50 border-[#D1A054] rounded-full">
               {user?.photoURL ? (
                 <img
                   src={user.photoURL}
@@ -113,11 +117,16 @@ const Navbar = () => {
               )}
             </div>
             {showLogOut && (
-              <button
-                onClick={handleLogout}
-                className="absolute right-0 top-11 font-semibold drop-shadow-2xl px-5 py-2 rounded-lg bg-white text-black shadow-xl hover:shadow-2xl whitespace-nowrap">
-                Log Out
-              </button>
+              <div className="absolute grid justify-start items-start right-0 z-40 top-12 font-semibold drop-shadow-2xl  p-2 rounded-lg bg-white text-black shadow-xl hover:shadow-2xl whitespace-nowrap">
+                <button
+                  className="hover:bg-gray-100 border-b border-slate-300 py-1 px-4 text-slate-950"
+                  onClick={handleLogout}>
+                  Log Out
+                </button>
+                <button className="hover:bg-gray-100 py-1 px-4 inline text-start text-slate-950 ">
+                  Profile
+                </button>
+              </div>
             )}
           </li>
         </>
@@ -160,8 +169,8 @@ const Navbar = () => {
           {navItems}
         </ul>
       </div>
-      <div className="navbar-end lg:hidden">
-        <div className="dropdown">
+      <div className="navbar-end  lg:hidden">
+        <div className="dropdown" onClick={handleShowNavbar}>
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -177,10 +186,12 @@ const Navbar = () => {
               />
             </svg>
           </label>
-          <ul className=" dropdown-content mt-5 right-0 p-2 shadow bg-opacity-30 grid gap-2 ite bg-gray-900">
+        </div>
+        {showNavbar && (
+          <ul className=" absolute top-20 right-0 mt-5 p-2 px-5 shadow bg-opacity-30 grid gap-2 items-start rounded-bl-xl bg-gray-900">
             {navItems}
           </ul>
-        </div>
+        )}
       </div>
     </header>
   );

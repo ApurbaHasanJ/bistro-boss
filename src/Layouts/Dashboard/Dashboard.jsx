@@ -7,7 +7,7 @@ import { useState } from "react";
 
 const Dashboard = () => {
   let [showTopNav, setShowTopNav] = useState(false);
-  const admin = false;
+  const admin = true;
 
   const handleShowTopNav = () => {
     setShowTopNav(!showTopNav);

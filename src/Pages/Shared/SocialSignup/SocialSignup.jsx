@@ -3,17 +3,52 @@ import { FaFacebookF } from "react-icons/fa";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { useContext } from "react";
 import Swal from "sweetalert2";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const SocialSignup = () => {
   const { continueWithGoogle, continueWithFacebook, continueWithGithub } =
     useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  // console.log(location);
+
+  const from = location.state?.from?.pathname || "/";
 
   // google sign up
   const handleGoogleSignIn = () => {
     continueWithGoogle()
       .then((result) => {
         const loggedUser = result.user;
-        console.log(loggedUser);
+        // console.log(loggedUser);
+        // take data to database
+        const userData = {
+          name: loggedUser?.displayName,
+          email: loggedUser?.email,
+          role: "user",
+          emailVerified: loggedUser?.emailVerified,
+          metadata: { ...loggedUser?.metadata },
+        };
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(userData),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            // console.log(data);
+            if (data.insertedId) {
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Sign in Successfully",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              navigate(from, { replace: true });
+            }
+          });
         Swal.fire({
           position: "top-end",
           icon: "success",
@@ -21,6 +56,7 @@ const SocialSignup = () => {
           showConfirmButton: false,
           timer: 1500,
         });
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error);

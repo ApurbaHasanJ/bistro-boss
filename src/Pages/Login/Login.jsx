@@ -16,10 +16,10 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  const navigate = useNavigate()
-  const location = useLocation()
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const from = location?.state?.from?.pathname || "/"
+  const from = location?.state?.from?.pathname || "/";
 
   const [disabled, setDisabled] = useState(true);
 
@@ -49,7 +49,7 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        navigate(from, {replace:true})
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error);

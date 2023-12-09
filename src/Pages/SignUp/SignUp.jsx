@@ -15,6 +15,7 @@ const SignUp = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -28,14 +29,34 @@ const SignUp = () => {
         userProfile(name)
           .then(() => {
             const loggedUser = userCredential.user;
-            console.log(loggedUser);
-            Swal.fire({
-              position: "top-end",
-              icon: "success",
-              title: "Sign Up Successfully",
-              showConfirmButton: false,
-              timer: 1500,
-            });
+            console.log("loggedUser", loggedUser);
+            const userData = {
+              name: loggedUser?.displayName,
+              email: loggedUser?.email,
+              role: "user",
+              emailVerified: loggedUser?.emailVerified,
+              metadata: { ...loggedUser?.metadata },
+            };
+            fetch("http://localhost:5000/users", {
+              method: "POST",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify(userData),
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                if (data.insertedId) {
+                  reset();
+                  Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Sign Up Successfully",
+                    showConfirmButton: false,
+                    timer: 1500,
+                  });
+                }
+              });
           })
           .catch((error) => {
             console.log(error);
@@ -48,9 +69,28 @@ const SignUp = () => {
       })
       .catch((error) => {
         console.log(error);
+
+        let errorMessage = "An error occurred. Please try again.";
+
+        if (error.code) {
+          // Extract the error code from the Firebase error
+          const errorCode = error.code;
+
+          // Customize error message based on the error code
+          switch (errorCode) {
+            case "auth/email-already-in-use":
+              errorMessage = "This email is already in use.";
+              break;
+
+            // Add more cases for other error codes if needed
+            default:
+              // Use the default error message
+              break;
+          }
+        }
         Swal.fire({
           icon: "error",
-          title: "Error creating user",
+          title: errorMessage,
           text: "Please try again.",
         });
       });

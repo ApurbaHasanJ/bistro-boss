@@ -52,16 +52,19 @@ const AuthProvider = ({ children }) => {
 
   // Continue with google
   const continueWithGoogle = () => {
+    setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
 
   // continue with Facebook
   const continueWithFacebook = () => {
+    setLoading(true);
     signInWithPopup(auth, facebookProvider);
   };
 
   // Continue with github
   const continueWithGithub = () => {
+    setLoading(true);
     signInWithPopup(auth, githubProvider);
   };
 
