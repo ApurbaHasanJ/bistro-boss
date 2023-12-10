@@ -30,6 +30,7 @@ const UserHome = () => {
   };
 
   const onCrop = (view) => {
+    console.log(view);
     setImg(view);
   };
 
@@ -38,6 +39,7 @@ const UserHome = () => {
     data.append("file", img);
     data.append("upload_preset", "bistro_boss");
     data.append("cloud_name", "dxixdugif");
+    console.log(data);
 
     fetch("https://api.cloudinary.com/v1_1/dxixdugif/image/upload", {
       method: "POST",
@@ -108,9 +110,9 @@ const UserHome = () => {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             className=" relative bg-gray-100 border-2 flex justify-center items-center border-[#D1A054] mx-auto w-[200px] h-[200px] rounded-full">
-            <div className="z-0">
+            <div className="z-0 w-full h-full rounded-full">
               {user?.photoURL ? (
-                <img src={user?.photoURL} alt={user?.displayName} />
+                <img className="w-full h-full rounded-full" src={user?.photoURL} alt={user?.displayName} />
               ) : (
                 <div className="font-bold text-5xl">
                   {user?.displayName[0].charAt(0).toUpperCase()}
@@ -154,7 +156,6 @@ const UserHome = () => {
                   <div className="p-4 md:p-5 space-y-4 overflow-hidden">
                     {/* photo edit and crop functionalities and codes*/}
                     <div>
-                      <div></div>
                       <Avatar
                         width={390}
                         height={295}

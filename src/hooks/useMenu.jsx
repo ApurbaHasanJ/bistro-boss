@@ -4,6 +4,7 @@ import LandingPage from "../Pages/LandingPage";
 const useMenu = () => {
   const {
     isPending: loading,
+    refetch,
     error,
     data,
   } = useQuery({
@@ -19,7 +20,7 @@ const useMenu = () => {
     return "An error has occurred: " + error.message;
   }
 
-  return [data, loading];
+  return [data, loading, refetch];
 };
 
 export default useMenu;
