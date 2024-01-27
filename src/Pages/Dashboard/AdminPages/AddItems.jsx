@@ -16,7 +16,14 @@ const AddItems = () => {
 
     if (!photos || !photos.length) {
       // Handle the case where no photos are selected
-      console.error("No photos selected");
+      // console.error("No photos selected");
+      Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "No photos selected",
+        showConfirmButton: false,
+        timer: 1500,
+      });
       setLoading(false);
       return;
     }
