@@ -25,7 +25,7 @@ const PaymentError = () => {
           Oops! Something went wrong with your payment. Please try again later.
         </p>
       </div>
-      <button className="mt-6 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full">
+      <button className="mt-6 btn-card font-bold py-2 px-4 rounded-full">
         <Link to="/shop">Continue Shopping</Link>
       </button>
     </section>
