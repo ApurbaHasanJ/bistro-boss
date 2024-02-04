@@ -5,20 +5,19 @@ import { useLocation, useNavigate } from "react-router-dom";
 import useCart from "../../../hooks/useCarts";
 
 const FoodCard = ({ menu }) => {
-  const { name, image, price, recipe, _id, category } = menu;
+  const { name, image, price, recipe, _id } = menu;
   const [, refetch] = useCart();
   // console.log(cart);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(menu);
-  const handleAddToCart = (menu) => {
-    console.log(menu);
+  // console.log(menu);
+  const handleAddToCart = () => {
+    // console.log(menu);
     if (user && user.email) {
       const cartItem = {
         menuId: _id,
         name,
-        category,
         image,
         price,
         userName: user.displayName,
@@ -84,7 +83,7 @@ const FoodCard = ({ menu }) => {
         <p>{recipe}</p>
         <div className="card-actions justify-center">
           <button
-            onClick={() => handleAddToCart(menu)}
+            onClick={() => handleAddToCart()}
             className="btn-card px-5 py-3  text-lg font-medium  uppercase">
             add to cart
           </button>

@@ -2,15 +2,51 @@ import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import { useForm } from "react-hook-form";
 import { FaCalendarAlt } from "react-icons/fa";
 import OurLocation from "../../ContactUs/Sections/OurLocation";
+import axios from "axios";
+import Swal from "sweetalert2";
+import { useContext } from "react";
+import { AuthContext } from "../../../Providers/AuthProvider";
 
 const Reservation = () => {
+  const {user}=useContext(AuthContext)
+
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
+
+  // handle submit reservation
   const onSubmit = (data) => {
     console.log(data);
+    const {date, time, guests, name, phone, email}=data
+    parseInt()
+    const reservation = {
+      name, email, phone, guests, date, time
+    }
+    axios
+      .post("http://localhost:5000/reservation/user", reservation)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data?.insertedId) {
+          reset();
+          Swal.fire({
+            title: "Done!",
+            text: "Reservation added successfully",
+            icon: "success",
+          });
+        }
+      })
+      .catch((error) => {
+        // Handle error if the reservation couldn't be added
+        console.error("Error adding reservation:", error);
+        Swal.fire({
+          title: "Error!",
+          text: "Failed to add reservation. Please try again.",
+          icon: "error",
+        });
+      });
   };
 
   return (
@@ -92,6 +128,7 @@ const Reservation = () => {
                           type="text"
                           placeholder="Your Name"
                           className="input py-7 hover:shadow-md"
+                          defaultValue={user?.displayName}
                           {...register("name", { required: true })}
                         />
                         {/* error msg */}
@@ -109,7 +146,7 @@ const Reservation = () => {
                         </label>
 
                         <input
-                          type="number"
+                          type="tel"
                           placeholder="Phone Number"
                           className="input py-7 hover:shadow-md"
                           min="0"
@@ -133,6 +170,7 @@ const Reservation = () => {
                           type="email"
                           placeholder="Your Email"
                           className="input py-7 hover:shadow-md"
+                          defaultValue={user?.email}
                           {...register("email", { required: true })}
                         />
                         {/* error msg */}
