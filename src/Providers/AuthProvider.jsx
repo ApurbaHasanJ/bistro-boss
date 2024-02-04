@@ -13,6 +13,7 @@ import {
 } from "firebase/auth";
 import { app } from "../firebase/firebase.config";
 import { useEffect } from "react";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
@@ -68,30 +69,45 @@ const AuthProvider = ({ children }) => {
     signInWithPopup(auth, githubProvider);
   };
 
-    // refresh user profile
-    const refreshUserProfile = () => {
-      setLoading(true);
-      const currentUser = auth.currentUser;
-  
-      if (currentUser) {
-        userProfile(currentUser.displayName, currentUser.photoURL)
-          .then(() => {
-            // Assuming the user profile update was successful
-            setLoading(false);
-          })
-          .catch((error) => {
-            console.log(error);
-            setLoading(false);
-          });
-      } else {
-        setLoading(false);
-      }
-    };
+  // refresh user profile
+  const refreshUserProfile = () => {
+    setLoading(true);
+    const currentUser = auth.currentUser;
+
+    if (currentUser) {
+      userProfile(currentUser.displayName, currentUser.photoURL)
+        .then(() => {
+          // Assuming the user profile update was successful
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.log(error);
+          setLoading(false);
+        });
+    } else {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      setLoading(false);
+
+      if (currentUser) {
+        axios
+          .post("http://localhost:5000/jwt", {
+            email: currentUser.email,
+          })
+          .then((res) => {
+            // console.log(res.data);
+            localStorage.setItem("bistro_access_token", res.data.token);
+
+            setLoading(false);
+          });
+      } else {
+        localStorage.removeItem("bistro_access_token");
+        setLoading(false);
+      }
     });
 
     return () => unsubscribe();
@@ -107,7 +123,7 @@ const AuthProvider = ({ children }) => {
     continueWithGoogle,
     continueWithFacebook,
     continueWithGithub,
-    refreshUserProfile
+    refreshUserProfile,
   };
 
   return (

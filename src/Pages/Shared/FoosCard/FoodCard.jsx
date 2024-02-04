@@ -5,19 +5,20 @@ import { useLocation, useNavigate } from "react-router-dom";
 import useCart from "../../../hooks/useCarts";
 
 const FoodCard = ({ menu }) => {
-  const { name, image, price, recipe, _id } = menu;
+  const { name, image, price, recipe, _id, category } = menu;
   const [, refetch] = useCart();
   // console.log(cart);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
-
+  console.log(menu);
   const handleAddToCart = (menu) => {
     console.log(menu);
     if (user && user.email) {
       const cartItem = {
         menuId: _id,
         name,
+        category,
         image,
         price,
         userName: user.displayName,
@@ -53,8 +54,7 @@ const FoodCard = ({ menu }) => {
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
         confirmButtonText: "Login now!",
-      })
-      .then((result) => {
+      }).then((result) => {
         if (result.isConfirmed) {
           let timerInterval;
           Swal.fire({

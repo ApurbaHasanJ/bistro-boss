@@ -36,27 +36,16 @@ const SocialSignup = () => {
           body: JSON.stringify(userData),
         })
           .then((res) => res.json())
-          .then((data) => {
-            // console.log(data);
-            if (data.insertedId) {
-              Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "Sign in Successfully",
-                showConfirmButton: false,
-                timer: 1500,
-              });
-              navigate(from, { replace: true });
-            }
+          .then(() => {
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Sign in Successfully",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            navigate(from, { replace: true });
           });
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "Sign in Successfully",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error);
