@@ -59,8 +59,8 @@ const PaymentHistory = () => {
                   </th>
                   <th
                     scope="row"
-                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                    {history?.totalPrice}
+                    className="px-6 py-4 font-semibold text-gray-900 whitespace-nowrap ">
+                    ${history?.totalPrice}
                   </th>
                   <td className="px-6 py-4">{history?.createdAt}</td>
                 </tr>

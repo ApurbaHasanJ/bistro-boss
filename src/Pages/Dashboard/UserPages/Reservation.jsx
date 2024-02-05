@@ -170,7 +170,8 @@ const Reservation = () => {
                           type="email"
                           placeholder="Your Email"
                           className="input py-7 hover:shadow-md"
-                          defaultValue={user?.email}
+                          value={user?.email}
+                          
                           {...register("email", { required: true })}
                         />
                         {/* error msg */}
