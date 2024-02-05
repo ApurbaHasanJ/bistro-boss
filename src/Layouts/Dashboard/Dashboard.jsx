@@ -24,7 +24,7 @@ const Dashboard = () => {
       <div
         className={`bg-[#D1A054] ${
           adminLoading ? "-left-[400px]" : "left-0"
-        } lg:block hidden pr-5 bg-fixed relative  w-[295px]  overflow-hidden transition-all shadow-2xl shadow-gray-500 pt-14 `}>
+        } lg:block hidden pr-5 bg-fixed relative  w-[295px]  overflow-hidden transition-all shadow-2xl shadow-gray-500 pt-14`}>
         <div className=" fixed">
           {/* title for large device */}
           <div className=" lg:block hidden md:ml-4 mx-auto">
@@ -74,7 +74,7 @@ const Dashboard = () => {
         <div
           className={`fixed bg-[#D1A054] h-full pb-4 pr-2 ${
             showDashboard ? "left-0" : "-left-[400px]"
-          } transform duration-700 shadow-2xl top-[89px] `}>
+          } transform duration-700 shadow-2xl top-[89px] z-50`}>
           <div className=" pt-5 ">
             {isAdmin ? <AdminNavItems /> : <UserNavItems />}
             <hr className="h-[0.1px] w-4/6 mx-auto my-7 bg-white" />

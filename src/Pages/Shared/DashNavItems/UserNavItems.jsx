@@ -13,7 +13,7 @@ const UserNavItems = () => {
   const [carts] = useCart();
   return (
     <nav className="w-full font-[Cinzel]">
-      <ul className="flex flex-col md:gap-6 gap-4 ">
+      <ul className="flex flex-col md:gap-6 gap-4 items-start">
         <li>
           <NavLink
             to="/dashboard/user-home"
