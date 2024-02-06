@@ -18,7 +18,7 @@ const ManageUsers = () => {
       confirmButtonText: "change!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/users/${user?._id}`, {
+        fetch(`http://localhost:5000/users/admin/${user?._id}`, {
           method: "PATCH",
         })
           .then((res) => res.json())
@@ -54,7 +54,7 @@ const ManageUsers = () => {
       confirmButtonText: "change!",
     }).then((res) => {
       if (res.isConfirmed) {
-        fetch(`http://localhost:5000/users/${user?._id}`, {
+        fetch(`http://localhost:5000/users/admin/${user?._id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -128,13 +128,14 @@ const ManageUsers = () => {
                     <td className="px-6 py-4 ">
                       {user?.role === "user" && (
                         <FaUserEdit
-                        title={user?.role}
+                          title={user?.role}
                           onClick={() => handleUsersRole(user)}
                           className="bg-[#D1A054] hover:bg-[#c8841f] p-1 rounded-md text-white text-[32px]"
                         />
                       )}
                       {user?.role === "admin" && (
                         <MdAdminPanelSettings
+                          onClick={() => handleUsersRole(user)}
                           title={"Admin role  can't be change"}
                           className="bg-[#D1A054] hover:bg-[#c8841f] p-1 rounded-md text-white text-[32px]"
                         />
