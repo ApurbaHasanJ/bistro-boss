@@ -29,7 +29,7 @@ const ManageUsers = () => {
               Swal.fire({
                 position: "top-end",
                 icon: "success",
-                title: `${user.name} is admin now!`,
+                title: `${user.name}'s role has been updated`,
                 showConfirmButton: false,
                 timer: 1500,
               });
