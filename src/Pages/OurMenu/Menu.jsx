@@ -4,12 +4,12 @@ import useMenu from "../../hooks/useMenu";
 import MenuCategory from "../Shared/MenuCategory/MenuCategory";
 
 const Menu = () => {
-  const [data, loading] = useMenu();
-  const offered = data.filter((items) => items.category === "offered");
-  const desserts = data.filter((items) => items.category === "dessert");
-  const pizzas = data.filter((items) => items.category === "pizza");
-  const salads = data.filter((items) => items.category === "salad");
-  const soups = data.filter((items) => items.category === "soup");
+  const [menus, loading] = useMenu();
+  const offered = menus.filter((items) => items.category === "offered");
+  const desserts = menus.filter((items) => items.category === "dessert");
+  const pizzas = menus.filter((items) => items.category === "pizza");
+  const salads = menus.filter((items) => items.category === "salad");
+  const soups = menus.filter((items) => items.category === "soup");
 
   return (
     <>

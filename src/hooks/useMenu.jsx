@@ -13,15 +13,15 @@ const useMenu = () => {
   });
 
   // Reverse the data array
-  const reversedData = [...data].reverse();
+  const menus = [...data].reverse();
 
-  console.log(reversedData);
+  console.log(menus);
 
   if (error) {
     return "An error has occurred: " + error.message;
   }
 
-  return [reversedData, loading, refetch, error];
+  return [menus, loading, refetch, error];
 };
 
 export default useMenu;

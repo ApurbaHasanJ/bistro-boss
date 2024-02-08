@@ -3,7 +3,7 @@ import useMenu from "../../../../hooks/useMenu";
 import { MdOutlineMenuBook } from "react-icons/md";
 
 const UserHeroInfo = () => {
-  const [data, ,] = useMenu();
+  const [menus, ,] = useMenu();
   return (
     <div className="grid gap-5 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 justify-center text-white mt-6 items-center">
       <div className="from-[#BB34F5] text-white bg-gradient-to-r w-full h-[150px] px-7 flex  gap-4 justify-center items-center to-[#FCDBFF]  rounded-lg">
@@ -12,7 +12,7 @@ const UserHeroInfo = () => {
           title="Wallet"
         />
         <div>
-          <h1 className="text-3xl font-semibold">{data?.length}</h1>
+          <h1 className="text-3xl font-semibold">{menus?.length}</h1>
           <p className="text-xl">MENU</p>
         </div>
       </div>

@@ -9,7 +9,7 @@ import { useState } from "react";
 import UpdateItem from "./UpdateItem";
 
 const ManageItems = () => {
-  const [data, loading, refetch] = useMenu();
+  const [menus, loading, refetch] = useMenu();
   const [item, setItem] = useState({});
   const [updating, setUpdating] = useState(false);
 
@@ -61,7 +61,7 @@ const ManageItems = () => {
               subTitle={"---Hurry Up!---"}
             />
             <h2 className="md:text-2xl mb-3 uppercase text-xl font-semibold font-[Cinzel] whitespace-nowrap">
-              Total Items: {data?.length}
+              Total Items: {menus?.length}
             </h2>
             <div className="relative overflow-x-auto shadow-md rounded-lg">
               {loading ? (
@@ -94,7 +94,7 @@ const ManageItems = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {data.map((menu, index) => (
+                    {menus.map((menu, index) => (
                       <tr
                         key={menu?._id}
                         className="bg-white border-b py-10 hover:bg-gray-50 ">

@@ -8,7 +8,6 @@ import SignUp from "../Pages/SignUp/SignUp";
 import ContactUs from "../Pages/ContactUs/ContactUs";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Dashboard from "../Layouts/Dashboard/Dashboard";
-import AdminHome from "../Pages/Dashboard/AdminPages/AdminHome";
 import AddItems from "../Pages/Dashboard/AdminPages/AddItems";
 import ManageItems from "../Pages/Dashboard/AdminPages/ManageItems";
 import ManageBookings from "../Pages/Dashboard/AdminPages/ManageBookings";
@@ -23,6 +22,7 @@ import MyCarts from "../Pages/Dashboard/UserPages/MyCarts";
 import PaymentSuccess from "../Pages/Payments/PaymentSuccess";
 import PaymentError from "../Pages/Payments/PaymentError";
 import UserHome from "../Pages/Dashboard/UserPages/UserHome/UserHome";
+import AdminHome from "../Pages/Dashboard/AdminPages/AdminHome/AdminHome";
 
 export const router = createBrowserRouter([
   {

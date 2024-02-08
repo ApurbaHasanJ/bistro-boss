@@ -9,7 +9,7 @@ import { useLocation } from "react-router-dom";
 import Loader from "../Shared/Loader/Loader";
 
 const OurShop = () => {
-  const [data, loading] = useMenu();
+  const [menus, loading] = useMenu();
   const location = useLocation();
   let menuTitle = ""; // Initialize menuTitle
 
@@ -27,11 +27,11 @@ const OurShop = () => {
   );
 
   const categoryMenus = {
-    salad: data.filter((items) => items.category === "salad"),
-    pizza: data.filter((items) => items.category === "pizza"),
-    soup: data.filter((items) => items.category === "soup"),
-    dessert: data.filter((items) => items.category === "dessert"),
-    drinks: data.filter((items) => items.category === "drinks"),
+    salad: menus.filter((items) => items.category === "salad"),
+    pizza: menus.filter((items) => items.category === "pizza"),
+    soup: menus.filter((items) => items.category === "soup"),
+    dessert: menus.filter((items) => items.category === "dessert"),
+    drinks: menus.filter((items) => items.category === "drinks"),
   };
 
   return (
