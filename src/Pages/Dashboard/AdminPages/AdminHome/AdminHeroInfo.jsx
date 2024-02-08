@@ -21,12 +21,12 @@ const AdminHeroInfo = () => {
     const price = parseFloat(order.totalPrice);
     return total + price;
   }, 0);
-  console.log("Total Revenue:", totalRevenue);
+  // console.log("Total Revenue:", totalRevenue);
 
   return (
-    <div className="grid gap-5 md:grid-cols-4 grid-cols-2 justify-center text-white mt-6 items-center">
+    <div className="grid gap-5 lg:grid-cols-4 md:grid-cols-2 grid-cols-1 justify-center text-white mt-6 items-center">
       <div className="from-[#BB34F5] text-white bg-gradient-to-r w-full h-[150px] px-7 drop-shadow-2xl flex  gap-4 justify-center items-center to-[#FCDBFF]  rounded-lg">
-        <FaWallet className="w-12 h-12 md:mx-0 mx-auto" title="Wallet" />
+        <FaWallet className="w-12 h-12" title="Wallet" />
 
         <div>
           <h1 className="text-3xl ">{totalRevenue}</h1>
@@ -34,21 +34,21 @@ const AdminHeroInfo = () => {
         </div>
       </div>
       <div className="from-[#D3A256] bg-gradient-to-r w-full h-[150px] px-7 drop-shadow-2xl flex gap-4 justify-center items-center to-[#FDE8C0]  rounded-lg">
-        <FaUsers className="w-12 h-12 md:mx-0 mx-auto" title="Customers" />
+        <FaUsers className="w-12 h-12" title="Customers" />
         <div>
           <h1 className="text-3xl ">{users?.length}</h1>
           <p className="text-xl capitalize">Customers</p>
         </div>
       </div>
       <div className="from-[#FE4880] bg-gradient-to-r w-full h-[150px] px-7 drop-shadow-2xl flex  gap-4 justify-center items-center to-[#FECDE9]  rounded-lg">
-        <SiCodechef className="w-12 h-12 md:mx-0 mx-auto" title="Products" />
+        <SiCodechef className="w-12 h-12" title="Products" />
         <div>
           <h1 className="text-3xl ">{menus?.length}</h1>
           <p className="text-xl capitalize">products</p>
         </div>
       </div>
       <div className="from-[#6AAEFF] bg-gradient-to-r w-full h-[150px] px-7 drop-shadow-2xl flex  gap-4 justify-center items-center to-[#B6F7FF]  rounded-lg">
-        <FaTruck className="w-12 h-12 md:mx-0 mx-auto" title="Orders" />
+        <FaTruck className="w-12 h-12" title="Orders" />
         <div>
           <h1 className="text-3xl ">{orders?.length}</h1>
           <p className="text-xl capitalize">Orders</p>

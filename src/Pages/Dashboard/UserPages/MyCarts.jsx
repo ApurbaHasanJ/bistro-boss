@@ -13,7 +13,7 @@ const MyCarts = () => {
   const [axiosSecure] = useAxiosSecure();
   // calculating total price
 
-  const totalPrice = carts.reduce((total, cart) => total + cart?.price, 0);
+  const totalPrice = carts.reduce((total, cart) => total + cart?.price, 0).toFixed(2);
 
   // handle delete from cart
   const handleDeleteItem = (cart) => {
