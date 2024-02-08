@@ -3,108 +3,71 @@ import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import { ImSpoonKnife } from "react-icons/im";
 import Swal from "sweetalert2";
 import { useState } from "react";
+import { UploadPhotos } from "../../Shared/Cloudinary/UploadPhotos";
 
 const AddItems = () => {
   const [loading, setLoading] = useState(false);
   const { register, handleSubmit, reset } = useForm();
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log(data);
     setLoading(true);
     const { name, category, price, photos, recipeDetails } = data;
+
     //  remove string from price
     const recipePrice = parseInt(price);
 
-    if (!photos || !photos.length) {
-      // Handle the case where no photos are selected
-      // console.error("No photos selected");
-      Swal.fire({
-        position: "top-end",
-        icon: "error",
-        title: "No photos selected",
-        showConfirmButton: false,
-        timer: 1500,
-      });
-      setLoading(false);
-      return;
-    }
+    // cloudinary photo upload
+    const itemImage = await UploadPhotos(photos[0]);
 
-    const photo = photos[0];
+    const menuData = {
+      name,
+      recipe: recipeDetails,
+      image: itemImage.img,
+      category,
+      price: recipePrice,
+    };
+    // console.log(itemImage);
+    // console.log(menuData);
 
-    const newFromData = new FormData();
-    newFromData.append("file", photo);
-    newFromData.append("upload_preset", "bistro_boss");
-    newFromData.append("cloud_name", "dxixdugif");
-    newFromData.append("folder", "bistro-boss"); // Specify the folder name here
-    console.log(photo);
-
-    fetch("https://api.cloudinary.com/v1_1/dxixdugif/image/upload", {
-      method: "POST",
-
-      body: newFromData,
-    })
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error(`File upload failed: ${res.statusText}`);
-        }
-        return res.json();
+    // post item data if the photo post post successfully
+    if (itemImage.img) {
+      fetch("http://localhost:5000/menus/admin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(menuData),
       })
-      .then((data) => {
-        console.log(data);
-        const menuData = {
-          name,
-          recipe: recipeDetails,
-          image: data.url,
-          category,
-          price: recipePrice,
-        };
-        console.log(menuData);
-        if (data.url) {
-          fetch("http://localhost:5000/menus", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(menuData),
-          })
-            .then((res) => res.json())
-            .then((data) => {
-              if (data.insertedId) {
-                setLoading(false);
-                reset();
-                Swal.fire({
-                  position: "top-end",
-                  icon: "success",
-                  title: "Menu Updated Successfully",
-                  showConfirmButton: false,
-                  timer: 1500,
-                });
-              }
-            })
-            .catch((err) => {
-              setLoading(false);
-              console.log(err);
-              Swal.fire({
-                position: "top-end",
-                icon: "error",
-                title: `${err.message}`,
-                showConfirmButton: false,
-                timer: 1500,
-              });
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.insertedId) {
+            setLoading(false);
+            reset();
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Menu Updated Successfully",
+              showConfirmButton: false,
+              timer: 1500,
             });
-        }
-      })
-      .catch((err) => {
-        setLoading(false);
-        console.log(err);
-        Swal.fire({
-          position: "top-end",
-          icon: "error",
-          title: `${err.message}`,
-          showConfirmButton: false,
-          timer: 1500,
+          }
+        })
+        .catch((err) => {
+          setLoading(false);
+          console.log(err);
+          Swal.fire({
+            position: "top-end",
+            icon: "error",
+            title: `${err.message}`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
         });
-      });
+    }
   };
+
+
+
   return (
     <section className="min-h-screen  mt-12">
       <SectionTitle title={"ADD AN ITEM"} subTitle={"---What's new?---"} />

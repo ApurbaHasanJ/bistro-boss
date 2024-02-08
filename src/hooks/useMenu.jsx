@@ -1,26 +1,27 @@
 import { useQuery } from "@tanstack/react-query";
-import LandingPage from "../Pages/LandingPage";
 
 const useMenu = () => {
   const {
     isPending: loading,
     refetch,
     error,
-    data,
+    data = [],
   } = useQuery({
-    queryKey: ["menu"],
+    queryKey: ["menus"],
     queryFn: () =>
       fetch("http://localhost:5000/menus").then((res) => res.json()),
   });
 
-  if (loading) {
-    <LandingPage/>;
-  }
+  // Reverse the data array
+  const reversedData = [...data].reverse();
+
+  console.log(reversedData);
+
   if (error) {
     return "An error has occurred: " + error.message;
   }
 
-  return [data, loading, refetch];
+  return [reversedData, loading, refetch, error];
 };
 
 export default useMenu;

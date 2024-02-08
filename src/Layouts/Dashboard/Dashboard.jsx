@@ -8,7 +8,7 @@ import { useState } from "react";
 import { RxCross2 } from "react-icons/rx";
 
 const Dashboard = () => {
-  let [showDashboard, setShowDashboard] = useState(false);
+  const [showDashboard, setShowDashboard] = useState(false);
   const isAdmin = true;
   const adminLoading = false;
 

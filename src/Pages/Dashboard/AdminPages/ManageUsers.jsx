@@ -84,7 +84,7 @@ const ManageUsers = () => {
       <SectionTitle title={"MANAGE ALL USERS"} subTitle={"---How Many!?---"} />
 
       {/* table */}
-      <div className="my-container mt-20">
+      <div className="my-container pb-20 md:pt-20 pt-10">
         <h2 className="md:text-2xl mb-3 uppercase text-xl font-semibold font-[Cinzel] whitespace-nowrap">
           Total Items: {users?.length}
         </h2>

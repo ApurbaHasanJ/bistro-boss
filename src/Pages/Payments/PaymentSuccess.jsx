@@ -1,5 +1,5 @@
 import Lottie from "react-lottie";
-import success from "/public/success.json";
+import success from "/src/assets/payment/success";
 import { Link } from "react-router-dom";
 
 const PaymentSuccess = () => {

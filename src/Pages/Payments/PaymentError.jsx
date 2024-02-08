@@ -1,5 +1,5 @@
 import Lottie from "react-lottie";
-import error from "/public/error.json";
+import error from "/src/assets/payment/error";
 import { Link } from "react-router-dom";
 
 const PaymentError = () => {
