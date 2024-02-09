@@ -29,10 +29,11 @@ const AddReview = () => {
       recipeDetails,
       recipeName,
       suggestion,
-      user: user?.email || "anonymous",
+      email: user?.email || "anonymous",
+      name: user?.displayName || "anonymous",
     };
 
-    axios.post("http://localhost:5000/reviews", {review}).then((res) => {
+    axios.post("http://localhost:5000/reviews", { review }).then((res) => {
       if (res.data.insertedId) {
         setRating(0);
         reset();
@@ -163,7 +164,9 @@ const AddReview = () => {
                     type="submit"
                     {...register("submit")}
                     className="border-none  bg-gradient-to-r from-[#835D23] hover:from-[#a57224] hover:to-[#d28209] to-[#c87f12] flex justify-center items-center gap-3 md:p-4 p-2 px-3 md:px-5 text-white bg-[#d1a054b3] hover:bg-[#ec9f2db3]">
-                    <span className="md:text-xl font-semibold">Send Review</span>
+                    <span className="md:text-xl font-semibold">
+                      Send Review
+                    </span>
                     <MdRocketLaunch className="md:text-2xl text-xl md:mx-0 mx-auto" />
                   </button>
                 </div>

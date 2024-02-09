@@ -26,6 +26,7 @@ const Testimonials = () => {
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, []);
+  console.log(reviews);
 
   const myStyles = {
     itemShapes: RoundedStar,
@@ -47,7 +48,7 @@ const Testimonials = () => {
           //   clickable: true,
           // }}
           autoplay={{
-            delay: 2500,
+            delay: 3000,
             // disableOnInteraction: ,
           }}
           //  navigation={}
@@ -67,7 +68,7 @@ const Testimonials = () => {
                   className="mb-9 md:text-7xl sm:text-5xl text-3xl"
                   icon={faQuoteLeft}
                 />
-                <p className="w-full text-center">{review?.details}</p>
+                <p className="w-full text-center">{review?.recipeDetails}</p>
                 <h3 className="text-2xl text-[#CD9003] uppercase mt-2">
                   {review?.name}
                 </h3>
