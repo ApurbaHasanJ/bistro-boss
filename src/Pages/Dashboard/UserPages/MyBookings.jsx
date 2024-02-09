@@ -27,15 +27,11 @@ const MyBookings = () => {
       />
 
       {/* table */}
-      <div className="my-container mt-20">
+      <div className="my-container md:my-6 mt-3">
         <div className="md:flex grid items-center justify-between">
-          <h2 className="md:text-2xl mb-3 uppercase text-xl font-semibold font-[Cinzel] whitespace-nowrap">
+          <h2 className="md:text-2xl mb-3 uppercase font-semibold font-[Cinzel] whitespace-nowrap">
             Total Bookings: {reservations?.length}
           </h2>
-          
-          {/* <button className="bg-[#D1A054] hover:bg-[#b97c20] text-white shadow-lg hover:shadow-2xl mb-3 py-3 px-5 rounded-lg text-lg font-semibold font-[Cinzel]">
-            PAY
-          </button> */}
         </div>
         <div className="relative  overflow-x-auto shadow-md   rounded-lg">
           <table className="w-full text-sm text-left rtl:text-right rounded-lg text-gray-500 ">
@@ -88,12 +84,14 @@ const MyBookings = () => {
                       scope="row"
                       className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
                       <div>
-                      {reservation?.date}
-                      <br />
-                      {reservation?.time}
+                        {reservation?.date}
+                        <br />
+                        {reservation?.time}
                       </div>
                     </th>
-                    <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">{reservation?.guests} Guests</td>
+                    <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                      {reservation?.guests} Guests
+                    </td>
 
                     <td className="flex items-center px-6 my-3 py-4">
                       <MdDeleteForever className="bg-red-600 hover:bg-red-700 p-1 rounded-md text-white text-[32px]" />

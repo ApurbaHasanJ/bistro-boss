@@ -41,11 +41,11 @@ const UpdateItem = ({ item, setUpdating, refetch }) => {
       });
   };
   return (
-    <div className="w-full">
+    <div className="w-full my-container">
       <SectionTitle title={"UPDATE ITEM"} subTitle={"---Wanna Change?---"} />
 
       <div
-        className="shadow-xl w-full relative mt-10 md:py-20 py-10 md:my-container px-4 rounded-lg"
+        className="shadow-xl w-full relative mt-10 md:py-16 py-10 md:my-container px-4 rounded-lg"
         style={{
           backgroundImage: `url('https://i.postimg.cc/tg8rPHSH/authentication.png')`,
         }}>
@@ -53,10 +53,10 @@ const UpdateItem = ({ item, setUpdating, refetch }) => {
           onClick={() => setUpdating(false)}
           className="absolute -right-2 -top-2 bg-gray-200 rounded-lg hover:text-red-600 p-[2px] text-2xl md:text-3xl duration-500"
         />
-        <div className="   my-7 mt-0 lg:my-16 items-center">
+        <div className=" ">
           {/* Login Img */}
 
-          <div className=" px-10 mx-3 lg:mx-0 rounded-lg">
+          <div className="  ">
             <form onSubmit={handleSubmit(onSubmit)}>
               {/* recipe name */}
               <div className="form-control ">

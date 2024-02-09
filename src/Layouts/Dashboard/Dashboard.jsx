@@ -9,7 +9,7 @@ import { RxCross2 } from "react-icons/rx";
 
 const Dashboard = () => {
   const [showDashboard, setShowDashboard] = useState(false);
-  const isAdmin = true;
+  const isAdmin = false;
   const adminLoading = false;
 
   const handleToggleDashboard = () => {

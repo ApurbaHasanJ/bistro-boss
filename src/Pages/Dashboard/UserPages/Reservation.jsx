@@ -50,19 +50,18 @@ const Reservation = () => {
   };
 
   return (
-    <div className="my-container min-h-screen mt-8">
+    <div className=" min-h-screen mt-8">
       {/* booking section */}
       <section>
         <SectionTitle subTitle={"---Reservation---"} title={"BOOK A TABLE"} />
         <div className="">
-          <div className="  mt-20">
+          <div className=" my-container  mt-6 ">
             <div
-              className="my-container shadow-xl"
+              className="shadow-xl p-3 py-5  rounded-lg"
               style={{
                 backgroundImage: `url('https://i.postimg.cc/tg8rPHSH/authentication.png')`,
               }}>
-              <div className="   my-7 mt-0 lg:my-16 items-center">
-                <div className=" px-10 mx-3 lg:mx-0 rounded-lg">
+              <div className=" my-7 mt-0 lg:my-10 ">
                   <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-6">
                       {/* recipe date */}
@@ -190,16 +189,15 @@ const Reservation = () => {
                         type="submit"
                         {...register("submit")}
                         // disabled={disabled}
-                        className=" border-none whitespace-nowrap bg-gradient-to-r from-[#835D23] hover:from-[#a57224] hover:to-[#d28209] to-[#c87f12] flex justify-center items-center gap-3 p-4 px-5 text-white bg-[#d1a054b3] hover:bg-[#ec9f2db3]">
-                        <span className="text-xl font-semibold">
+                        className=" border-none whitespace-nowrap bg-gradient-to-r from-[#835D23] hover:from-[#a57224] hover:to-[#d28209] to-[#c87f12] flex justify-center items-center gap-3 md:p-4 p-2 px-3 md:px-5 text-white bg-[#d1a054b3] hover:bg-[#ec9f2db3]">
+                        <span className="md:text-xl font-semibold">
                           Book A Table
                         </span>
-                        <FaCalendarAlt className=" text-2xl md:mx-0 mx-auto" />
+                        <FaCalendarAlt className=" md:text-2xl text-xl md:mx-0 mx-auto" />
                       </button>
                     </div>
                   </form>
                 </div>
-              </div>
             </div>
           </div>
         </div>

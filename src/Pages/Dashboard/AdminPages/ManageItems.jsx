@@ -51,7 +51,7 @@ const ManageItems = () => {
 
   return (
     <div className="py-12 w-full min-h-screen bg-[#F6F6F6]">
-      <div className="md:my-container px-3 w-full">
+      <div className=" w-full">
         {updating ? (
           <UpdateItem item={item} setUpdating={setUpdating} refetch={refetch} />
         ) : (
@@ -60,7 +60,8 @@ const ManageItems = () => {
               title={"MANAGE ALL ITEMS"}
               subTitle={"---Hurry Up!---"}
             />
-            <h2 className="md:text-2xl mb-3 uppercase text-xl font-semibold font-[Cinzel] whitespace-nowrap">
+            <div className="my-container">
+            <h2 className="md:text-2xl mt-3 md:mb-1 uppercase font-semibold font-[Cinzel] whitespace-nowrap">
               Total Items: {menus?.length}
             </h2>
             <div className="relative overflow-x-auto shadow-md rounded-lg">
@@ -133,6 +134,7 @@ const ManageItems = () => {
                   </tbody>
                 </table>
               )}
+            </div>
             </div>
           </>
         )}

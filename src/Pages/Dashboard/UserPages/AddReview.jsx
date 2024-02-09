@@ -54,7 +54,7 @@ const AddReview = () => {
         subTitle={"---Sharing is Caring!!!---"}
       />
 
-      <div className="pb-20 md:pt-20 pt-10">
+      <div className="pb-20 md:pt-16 pt-10">
         <div
           className=" shadow-xl rounded-lg"
           style={{

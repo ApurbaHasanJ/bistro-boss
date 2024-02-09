@@ -84,18 +84,18 @@ const MyCarts = () => {
       <SectionTitle title={"WANNA ADD MORE?"} subTitle={"---My Cart!---"} />
 
       {/* table */}
-      <div className="mt-20 my-container">
+      <div className="mt-2 my-container">
         {cartsLoading || loading ? (
           <div className="h-60 flex justify-center items-center">
             <Loader />
           </div>
         ) : (
           <>
-            <div className="md:flex grid items-center justify-between">
-              <h2 className="md:text-2xl mb-3 uppercase text-xl font-semibold font-[Cinzel] whitespace-nowrap">
+            <div className="md:flex mt-2 grid items-center justify-between">
+              <h2 className="md:text-2xl  uppercase font-semibold font-[Cinzel] whitespace-nowrap">
                 Total Items: {carts?.length}
               </h2>
-              <h2 className="md:text-2xl mb-3 uppercase text-xl font-semibold font-[Cinzel] whitespace-nowrap">
+              <h2 className="md:text-2xl md:mb-0 mb-2 uppercase font-semibold font-[Cinzel] whitespace-nowrap">
                 total price: ${totalPrice}
               </h2>
               <button

@@ -63,8 +63,8 @@ const ManageBookings = () => {
       />
 
       {/* table */}
-      <div className="my-container mt-20">
-        <h2 className="md:text-2xl mb-3 uppercase text-xl font-semibold font-[Cinzel] whitespace-nowrap">
+      <div className="my-container ">
+        <h2 className="md:text-2xl mt-3 md:mb-1 uppercase text-xl font-semibold font-[Cinzel] whitespace-nowrap">
           Total Items: {reservations?.length}
         </h2>
         <div className="relative  overflow-x-auto shadow-md   rounded-lg">

@@ -10,8 +10,8 @@ const PaymentHistory = () => {
       <SectionTitle title={"PAYMENT HISTORY"} subTitle={"---At A Glance!---"} />
 
       {/* table */}
-      <div className="mt-20 my-container">
-        <h2 className="md:text-2xl mb-3 uppercase text-xl font-semibold font-[Cinzel] whitespace-nowrap">
+      <div className=" my-container">
+        <h2 className="md:text-2xl md:mb-1 mt-2 uppercase font-semibold font-[Cinzel] whitespace-nowrap">
           Total Items: {payHistories?.length}
         </h2>
         <div className="relative  overflow-x-auto shadow-md   rounded-lg">

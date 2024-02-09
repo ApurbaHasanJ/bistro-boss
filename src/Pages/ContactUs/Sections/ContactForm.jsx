@@ -18,7 +18,7 @@ const ContactForm = () => {
   }
 
   return (
-    <section className="mt-24 my-container">
+    <section className="md:mt-16 mt-10 my-container">
       <SectionTitle
         subTitle={"---Send Us a Message---"}
         title={"CONTACT FORM"}
@@ -26,17 +26,16 @@ const ContactForm = () => {
 
       {/* Body */}
 
-      <div className="py-20 ">
+      <div className="md:my-16 my-10 ">
         <div
-          className="my-container shadow-xl"
+          className="my-container shadow-xl rounded-lg"
           style={{
             backgroundImage: `url('https://i.postimg.cc/tg8rPHSH/authentication.png')`,
           }}>
           <div className="   my-7 mt-0 lg:my-16 items-center">
             {/* Login Img */}
 
-            <div className=" px-10 mx-3 lg:mx-0 rounded-lg">
-              <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="grid grid-cols-2 gap-3 mb-3">
                   {/* name */}
                   <div className="form-control ">
@@ -112,13 +111,12 @@ const ContactForm = () => {
                     type="submit"
                     {...register("submit")}
                     // disabled={disabled}
-                    className="  border-none bg-gradient-to-r from-[#835D23] hover:from-[#a57224] hover:to-[#d28209] to-[#c87f12] flex justify-center items-center gap-3 p-4 px-5 text-white bg-[#d1a054b3] hover:bg-[#ec9f2db3]">
-                    <span className="text-xl font-semibold">Send Message</span>
-                    <BsFillSendFill className="text-xl" />
+                    className="  border-none bg-gradient-to-r from-[#835D23] hover:from-[#a57224] hover:to-[#d28209] to-[#c87f12] flex justify-center items-center gap-3 md:p-4 p-2 px-3 md:px-5 text-white bg-[#d1a054b3] hover:bg-[#ec9f2db3]">
+                    <span className="md:text-xl font-semibold">Send Message</span>
+                    <BsFillSendFill className="md:text-xl" />
                   </button>
                 </div>
               </form>
-            </div>
           </div>
         </div>
       </div>

@@ -6,7 +6,7 @@ import { AiFillClockCircle } from "react-icons/ai";
 
 const OurLocation = () => {
     return (
-        <section className="mt-24 my-container">
+        <section className="md:my-16 my-10 my-container">
         <SectionTitle subTitle={"---Visit Us---"} title={"OUR LOCATION"} />
 
         <div className="grid md:grid-cols-3 sm:grid-cols-2 gap-5 mt-16">
