@@ -3,9 +3,12 @@ import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import { FaUserEdit } from "react-icons/fa";
 import useUsers from "../../../hooks/useUsers";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const ManageUsers = () => {
   const [users, refetch] = useUsers();
+  const [axiosSecure] = useAxiosSecure();
+  // console.log(users);
 
   const handleUsersRole = (user) => {
     Swal.fire({
@@ -18,13 +21,11 @@ const ManageUsers = () => {
       confirmButtonText: "change!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/users/admin/${user?._id}`, {
-          method: "PATCH",
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-            if (data.modifiedCount) {
+        axiosSecure
+          .patch(`http://localhost:5000/users/admin/${user?._id}`)
+          .then((res) => {
+            console.log(res.data);
+            if (res.data.modifiedCount) {
               refetch();
               Swal.fire({
                 position: "top-end",
@@ -54,13 +55,11 @@ const ManageUsers = () => {
       confirmButtonText: "change!",
     }).then((res) => {
       if (res.isConfirmed) {
-        fetch(`http://localhost:5000/users/admin/${user?._id}`, {
-          method: "DELETE",
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-            if (data.acknowledged) {
+        axiosSecure
+          .delete(`http://localhost:5000/users/admin/${user?._id}`)
+          .then((res) => {
+            console.log(res.data);
+            if (res.data.acknowledged) {
               refetch();
               Swal.fire({
                 position: "top-end",
@@ -136,7 +135,7 @@ const ManageUsers = () => {
                       {user?.role === "admin" && (
                         <MdAdminPanelSettings
                           onClick={() => handleUsersRole(user)}
-                          title={"Admin role  can't be change"}
+                          title={user?.role}
                           className="bg-[#D1A054] hover:bg-[#c8841f] p-1 rounded-md text-white text-[32px]"
                         />
                       )}

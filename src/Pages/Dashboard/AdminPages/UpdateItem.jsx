@@ -2,11 +2,11 @@ import { ImSpoonKnife } from "react-icons/im";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import { useForm } from "react-hook-form";
 import { RxCross2 } from "react-icons/rx";
-import axios from "axios";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const UpdateItem = ({ item, setUpdating, refetch }) => {
-  console.log(item);
+  const [axiosSecure] = useAxiosSecure();
   const {
     register,
     handleSubmit,
@@ -24,7 +24,7 @@ const UpdateItem = ({ item, setUpdating, refetch }) => {
     };
     // console.log(menu);
 
-    axios
+    axiosSecure
       .patch(`http://localhost:5000/menus/admin/${item?._id}`, menu)
       .then((res) => {
         if (res.data.modifiedCount > 0) {

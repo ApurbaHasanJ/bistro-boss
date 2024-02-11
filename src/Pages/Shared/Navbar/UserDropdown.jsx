@@ -2,12 +2,11 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../Providers/AuthProvider";
+import useAdmin from "../../../hooks/useAdmin";
 
 const UserDropdown = ({ handleToggleDropDown }) => {
   const { user, logOut } = useContext(AuthContext);
-  //   const [isAdmin, adminLoading] = useAdmin();
-  const isAdmin = true;
-  const adminLoading = false;
+  const [isAdmin, adminLoading] = useAdmin();
 
   // Handle Logout
   const handleLogout = () => {
@@ -38,9 +37,7 @@ const UserDropdown = ({ handleToggleDropDown }) => {
       {user ? (
         <>
           <div className="px-4 py-3">
-            <span className="block text-gray-900 ">
-              {user?.displayName}
-            </span>
+            <span className="block text-gray-900 ">{user?.displayName}</span>
             <span className="block  text-gray-500 truncate dark:text-gray-400">
               {user?.email}
             </span>
@@ -48,13 +45,7 @@ const UserDropdown = ({ handleToggleDropDown }) => {
           <ul className="py-2" aria-labelledby="user-menu-button">
             <li>
               <Link
-                to={`/dashboard/${
-                  adminLoading
-                    ? "loading..."
-                    : isAdmin
-                    ? "admin-home"
-                    : "user-home"
-                }`}
+                to={`/dashboard/${isAdmin ? "admin-home" : "user-home"}`}
                 className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
                 Dashboard
               </Link>

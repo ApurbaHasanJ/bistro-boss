@@ -7,6 +7,7 @@ import UserDropdown from "./UserDropdown";
 const UserAccount = () => {
   const { user } = useContext(AuthContext);
   const [showDropDown, setShowDropDown] = useState(false);
+  
 
   const handleToggleDropDown = () => {
     setShowDropDown(!showDropDown);

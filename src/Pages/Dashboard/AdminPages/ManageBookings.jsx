@@ -1,12 +1,15 @@
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import { MdDone } from "react-icons/md";
-import axios from "axios";
 import Swal from "sweetalert2";
 import useAdminReservations from "../../../hooks/useAdminReservations";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const ManageBookings = () => {
   // const [reservations, setReservations] = useState();
   const { reservations, refetch } = useAdminReservations();
+  console.log(reservations);
+
+  const [axiosSecure] = useAxiosSecure();
 
   // get all bookings
 
@@ -21,7 +24,7 @@ const ManageBookings = () => {
       confirmButtonText: "change!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios
+        axiosSecure
           .patch(`http://localhost:5000/reservation/admin/${id}`)
           .then((res) => {
             if (res.data.modifiedCount > 0) {

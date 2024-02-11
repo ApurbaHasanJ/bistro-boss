@@ -1,5 +1,3 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import {
   Bar,
   BarChart,
@@ -9,16 +7,21 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import { useEffect, useState } from "react";
 
 const MenuSoldChart = () => {
   const [orders, setOrders] = useState([]);
+  const [axiosSecure] = useAxiosSecure();
   const colors = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "red", "pink"];
 
+  // get order stats
   useEffect(() => {
-    axios
-      .get(`http://localhost:5000/pay-history/admin/order-stats`)
+    axiosSecure
+      .get(`/pay-history/admin/order-stats`)
       .then((res) => setOrders(res.data));
-  }, []);
+  },[]);
+
   console.log(orders);
 
   const getPath = (x, y, width, height) => {

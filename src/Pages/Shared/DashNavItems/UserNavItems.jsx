@@ -21,8 +21,8 @@ const UserNavItems = () => {
               isActive ? "dashActive" : "dashDefault"
             }>
             <div className="flex items-center justify-start gap-4">
-              <FaHome className="w-14 h-6 md:mx-0 mx-auto" title="USER HOME" />
-              <span className="text-base font-semibold whitespace-nowrap">
+              <FaHome className="md:text-base text-xs md:mx-0 mx-auto" title="USER HOME" />
+              <span className="md:text-base text-xs font-semibold whitespace-nowrap">
                 USER HOME
               </span>
             </div>
@@ -36,10 +36,10 @@ const UserNavItems = () => {
             }>
             <div className="flex items-center justify-start gap-4">
               <FaCalendarAlt
-                className="w-14 h-6 md:mx-0 mx-auto"
+                className="md:text-base text-xs md:mx-0 mx-auto"
                 title="RESERVATION"
               />
-              <span className="text-base font-semibold whitespace-nowrap">
+              <span className="md:text-base text-xs font-semibold whitespace-nowrap">
                 RESERVATION
               </span>
             </div>
@@ -53,10 +53,10 @@ const UserNavItems = () => {
             }>
             <div className="flex items-center justify-start gap-4">
               <FaWallet
-                className="w-14 h-6 md:mx-0 mx-auto"
+                className="md:text-base text-xs md:mx-0 mx-auto"
                 title="PAYMENT HISTORY"
               />
-              <span className="text-base font-semibold whitespace-nowrap">
+              <span className="md:text-base text-xs font-semibold whitespace-nowrap">
                 PAYMENT HISTORY
               </span>
             </div>
@@ -71,14 +71,14 @@ const UserNavItems = () => {
             <div className="flex items-center justify-start gap-4">
               <div className="relative whitespace-nowrap">
                 <FaCartShopping
-                  className="w-14 h-6 md:mx-0 mx-auto"
+                  className="md:text-base text-xs md:mx-0 mx-auto"
                   title="MY CART"
                 />
                 <span className="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-red-600 border border-white rounded-full -top-2 -end-2 ">
                   {carts?.length || 0}
                 </span>
               </div>
-              <span className="text-base font-semibold whitespace-nowrap">
+              <span className="md:text-base text-xs font-semibold whitespace-nowrap">
                 MY CART
               </span>
             </div>
@@ -92,10 +92,10 @@ const UserNavItems = () => {
             }>
             <div className="flex items-center justify-start gap-4">
               <FaCalendarCheck
-                className="w-14 h-6 md:mx-0 mx-auto"
+                className="md:text-base text-xs md:mx-0 mx-auto"
                 title="MY BOOKINGS"
               />
-              <span className="text-base font-semibold whitespace-nowrap">
+              <span className="md:text-base text-xs font-semibold whitespace-nowrap">
                 MY BOOKINGS
               </span>
             </div>
@@ -109,10 +109,10 @@ const UserNavItems = () => {
             }>
             <div className="flex items-center justify-start gap-4">
               <MdReviews
-                className="w-14 h-6 md:mx-0 mx-auto"
+                className="md:text-base text-xs md:mx-0 mx-auto"
                 title="ADD REVIEWS"
               />
-              <span className="text-base font-semibold whitespace-nowrap">
+              <span className="md:text-base text-xs font-semibold whitespace-nowrap">
                 ADD REVIEWS
               </span>
             </div>

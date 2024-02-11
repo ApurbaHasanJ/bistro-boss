@@ -1,18 +1,20 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from "recharts";
 import PieChartLegend from "./PieChartLegend";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import { useEffect, useState } from "react";
 
 const SoldPieChart = () => {
   const [orders, setOrders] = useState([]);
+
+  const [axiosSecure] = useAxiosSecure();
   const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#BB34F5"];
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:5000/pay-history/admin/order-stats`)
+    axiosSecure
+      .get(`/pay-history/admin/order-stats`)
       .then((res) => setOrders(res.data));
-  }, []);
-  console.log(orders);
+  },[]);
+  // console.log(orders);
 
   const RADIAN = Math.PI / 180;
   const renderCustomizedLabel = ({

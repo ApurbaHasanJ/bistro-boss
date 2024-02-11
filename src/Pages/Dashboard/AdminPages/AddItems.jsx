@@ -4,10 +4,12 @@ import { ImSpoonKnife } from "react-icons/im";
 import Swal from "sweetalert2";
 import { useState } from "react";
 import { UploadPhotos } from "../../Shared/Cloudinary/UploadPhotos";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const AddItems = () => {
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const { register, handleSubmit, reset } = useForm();
+  const [axiosSecure] = useAxiosSecure();
   const onSubmit = async (data) => {
     console.log(data);
     setLoading(true);
@@ -31,16 +33,10 @@ const AddItems = () => {
 
     // post item data if the photo post post successfully
     if (itemImage.img) {
-      fetch("http://localhost:5000/menus/admin", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(menuData),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.insertedId) {
+      axiosSecure
+        .post("http://localhost:5000/menus/admin", menuData)
+        .then((response) => {
+          if (response.data.insertedId) {
             setLoading(false);
             reset();
             Swal.fire({
@@ -52,13 +48,13 @@ const AddItems = () => {
             });
           }
         })
-        .catch((err) => {
+        .catch((error) => {
           setLoading(false);
-          console.log(err);
+          console.error(error);
           Swal.fire({
             position: "top-end",
             icon: "error",
-            title: `${err.message}`,
+            title: error.message, // Assuming error.message contains the error message
             showConfirmButton: false,
             timer: 1500,
           });
@@ -70,7 +66,7 @@ const AddItems = () => {
     <section className="min-h-screen  mt-12">
       <SectionTitle title={"ADD AN ITEM"} subTitle={"---What's new?---"} />
 
-      <div className="md:my-16 my-container my-10">
+      <div className="md:my-9 my-container my-6">
         {loading ? (
           <div className="mx-5">
             <div className="flex justify-center items-center border md:p-32 p-16 shadow-2xl shadow-[#d19f54a8] rounded-xl drop-shadow-2xl max-w-3xl mx-auto mt-40">
@@ -90,100 +86,100 @@ const AddItems = () => {
             <div className="   my-7 mt-0 lg:my-10 ">
               {/* Login Img */}
               <form onSubmit={handleSubmit(onSubmit)}>
-                  {/* recipe name */}
+                {/* recipe name */}
+                <div className="form-control ">
+                  <label className="label justify-start text-base font-medium text-slate-900 ">
+                    <span className="label-text">Recipe Name</span>
+                    <span className="text-red-600 text-xl">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="recipeName"
+                    {...register("name")}
+                    required
+                    placeholder="Recipe name"
+                    className="input hover:shadow-md "
+                  />
+                </div>
+                <div className="grid grid-cols-2 gap-3 mb-3">
+                  {/* Category */}
                   <div className="form-control ">
                     <label className="label justify-start text-base font-medium text-slate-900 ">
-                      <span className="label-text">Recipe Name</span>
+                      <span className="label-text">Category</span>
                       <span className="text-red-600 text-xl">*</span>
                     </label>
-                    <input
-                      type="text"
-                      name="recipeName"
-                      {...register("name")}
-                      required
-                      placeholder="Recipe name"
+                    <select
+                      {...register("category")}
                       className="input hover:shadow-md "
-                    />
+                      required>
+                      <option value="salad">Salad</option>
+                      <option value="pizza">Pizza</option>
+                      <option value="soup">Soup</option>
+                      <option value="dessert">Dessert</option>
+                      <option value="drinks">Drinks</option>
+                    </select>
                   </div>
-                  <div className="grid grid-cols-2 gap-3 mb-3">
-                    {/* Category */}
-                    <div className="form-control ">
-                      <label className="label justify-start text-base font-medium text-slate-900 ">
-                        <span className="label-text">Category</span>
-                        <span className="text-red-600 text-xl">*</span>
-                      </label>
-                      <select
-                        {...register("category")}
-                        className="input hover:shadow-md "
-                        required>
-                        <option value="salad">Salad</option>
-                        <option value="pizza">Pizza</option>
-                        <option value="soup">Soup</option>
-                        <option value="dessert">Dessert</option>
-                        <option value="drinks">Drinks</option>
-                      </select>
-                    </div>
-                    {/* recipe price */}
-                    <div className="form-control mb-3">
-                      <label className="label justify-start text-base font-medium text-slate-900 ">
-                        <span className="label-text">Price</span>
-                        <span className="text-red-600 text-xl">*</span>
-                      </label>
-                      <input
-                        type="number"
-                        id="price"
-                        min={0}
-                        name="price"
-                        {...register("price")}
-                        className="input hover:shadow-md "
-                        required
-                        placeholder="Price"
-                      />
-                    </div>
-                  </div>
-                  {/* Recipe details */}
+                  {/* recipe price */}
                   <div className="form-control mb-3">
                     <label className="label justify-start text-base font-medium text-slate-900 ">
-                      <span className="label-text">Recipe Details</span>
-                      <span className="text-red-600 text-xl">*</span>
-                    </label>
-                    <textarea
-                      name="recipe details"
-                      {...register("recipeDetails")}
-                      required
-                      placeholder="Your recipe details"
-                      className="textarea hover:shadow-md "
-                      rows="8"
-                    />
-                  </div>
-                  {/* Recipe photo */}
-                  <div className="form-control mb-3">
-                    <label className="label justify-start text-base font-medium text-slate-900 ">
-                      <span className="label-text">Upload Item Image</span>
+                      <span className="label-text">Price</span>
                       <span className="text-red-600 text-xl">*</span>
                     </label>
                     <input
-                      className="  file-input hover:shadow-md w-full max-w-xs"
-                      type="file"
-                      {...register("photos", { required: true })}
+                      type="number"
+                      id="price"
+                      min={0}
+                      name="price"
+                      {...register("price")}
+                      className="input hover:shadow-md "
+                      required
+                      placeholder="Price"
                     />
                   </div>
+                </div>
+                {/* Recipe details */}
+                <div className="form-control mb-3">
+                  <label className="label justify-start text-base font-medium text-slate-900 ">
+                    <span className="label-text">Recipe Details</span>
+                    <span className="text-red-600 text-xl">*</span>
+                  </label>
+                  <textarea
+                    name="recipe details"
+                    {...register("recipeDetails")}
+                    required
+                    placeholder="Your recipe details"
+                    className="textarea hover:shadow-md "
+                    rows="8"
+                  />
+                </div>
+                {/* Recipe photo */}
+                <div className="form-control mb-3">
+                  <label className="label justify-start text-base font-medium text-slate-900 ">
+                    <span className="label-text">Upload Item Image</span>
+                    <span className="text-red-600 text-xl">*</span>
+                  </label>
+                  <input
+                    className="  file-input hover:shadow-md w-full max-w-xs"
+                    type="file"
+                    {...register("photos", { required: true })}
+                  />
+                </div>
 
-                  <div className="flex justify-center mt-7 ">
-                    <button
-                      type="submit"
-                      value="submit"
-                      {...register("submit")}
-                      // disabled={disabled}
-                      className="  border-none bg-gradient-to-r from-[#835D23] hover:from-[#a57224] hover:to-[#d28209] to-[#c87f12] flex justify-center items-center gap-3 md:p-4 p-2 px-3 md:px-5 text-white bg-[#d1a054b3] hover:bg-[#ec9f2db3]">
-                      <span className="md:text-xl font-semibold">Add Item</span>
-                      <ImSpoonKnife
-                        className=" md:text-2xl text-xl md:mx-0 mx-auto"
-                        title="ADD ITEMS"
-                      />
-                    </button>
-                  </div>
-                </form>
+                <div className="flex justify-center mt-7 ">
+                  <button
+                    type="submit"
+                    value="submit"
+                    {...register("submit")}
+                    // disabled={disabled}
+                    className="  border-none bg-gradient-to-r from-[#835D23] hover:from-[#a57224] hover:to-[#d28209] to-[#c87f12] flex justify-center items-center gap-3 md:p-4 p-2 px-3 md:px-5 text-white bg-[#d1a054b3] hover:bg-[#ec9f2db3]">
+                    <span className="md:text-xl font-semibold">Add Item</span>
+                    <ImSpoonKnife
+                      className=" md:text-2xl text-xl md:mx-0 mx-auto"
+                      title="ADD ITEMS"
+                    />
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         )}

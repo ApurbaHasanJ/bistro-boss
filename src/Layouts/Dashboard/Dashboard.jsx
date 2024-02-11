@@ -6,11 +6,13 @@ import { HiOutlineMenu } from "react-icons/hi";
 import { useState } from "react";
 
 import { RxCross2 } from "react-icons/rx";
+import useAdmin from "../../hooks/useAdmin";
 
 const Dashboard = () => {
   const [showDashboard, setShowDashboard] = useState(false);
-  const isAdmin = false;
-  const adminLoading = false;
+  const[isAdmin, adminLoading]=useAdmin()
+  // const isAdmin = true;
+  // const adminLoading = false;
 
   const handleToggleDashboard = () => {
     setShowDashboard(!showDashboard);

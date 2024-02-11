@@ -2,20 +2,29 @@ import { FaTruck, FaUsers, FaWallet } from "react-icons/fa";
 import { SiCodechef } from "react-icons/si";
 import useMenu from "../../../../hooks/useMenu";
 import useUsers from "../../../../hooks/useUsers";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 
 const AdminHeroInfo = () => {
   const [menus] = useMenu();
   const [users] = useUsers();
-  const [orders, setOrders] = useState([]);
+  // const [orders, setOrders] = useState([]);
+  const [axiosSecure] = useAxiosSecure();
 
-  useEffect(() => {
-    axios.get("http://localhost:5000/pay-history/admin").then((res) => {
-      setOrders(res.data);
-      console.log(res.data);
-    });
-  }, []);
+  // useEffect(() => {
+  //   axiosSecure.get("/pay-history/admin").then((res) => {
+  //     console.log(res.data);
+  //     setOrders(res.data);
+  //   });
+  // });
+
+  const { data: orders = [] } = useQuery({
+    queryKey: "order-stats",
+    queryFn: async () => {
+      const response = await axiosSecure.get(`/pay-history/admin`);
+      return response.data;
+    },
+  });
 
   const totalRevenue = orders.reduce((total, order) => {
     const price = parseFloat(order.totalPrice);

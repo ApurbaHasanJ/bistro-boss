@@ -15,7 +15,7 @@ const useMenu = () => {
   // Reverse the data array
   const menus = [...data].reverse();
 
-  console.log(menus);
+  // console.log(menus);
 
   if (error) {
     return "An error has occurred: " + error.message;

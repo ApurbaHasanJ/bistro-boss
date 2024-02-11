@@ -1,6 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "./useAxiosSecure";
 
 const useAdminReservations = () => {
+  const [axiosSecure] = useAxiosSecure();
   const {
     refetch,
     isPending: reservationPending,
@@ -9,9 +11,9 @@ const useAdminReservations = () => {
   } = useQuery({
     queryKey: ["reservations"],
     queryFn: () =>
-      fetch("http://localhost:5000/reservation/admin").then((res) =>
-        res.json()
-      ),
+      axiosSecure
+        .get("http://localhost:5000/reservation/admin")
+        .then((res) => res.data),
   });
 
   return { refetch, reservations, reservationPending };

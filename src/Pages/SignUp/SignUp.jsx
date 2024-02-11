@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialSignup from "../Shared/SocialSignup/SocialSignup";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
@@ -11,6 +11,11 @@ const SignUp = () => {
 
   // get auth Context
   const { createUser, userProfile } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location?.state?.from?.pathname || "/";
 
   const {
     register,
@@ -55,6 +60,7 @@ const SignUp = () => {
                     showConfirmButton: false,
                     timer: 1500,
                   });
+                  navigate(from, { replace: true });
                 }
               });
           })

@@ -7,8 +7,13 @@ import {
 } from "react-icons/md";
 import { FaShop } from "react-icons/fa6";
 import UserAccount from "./UserAccount";
+import useAdmin from "../../../hooks/useAdmin";
 
 const NavItems = () => {
+  const [isAdmin] = useAdmin();
+  // const isAdmin = false;
+  // const adminLoading = false;
+
   return (
     <>
       {/* Home route */}
@@ -34,7 +39,7 @@ const NavItems = () => {
       </li>
       <li>
         <NavLink
-          to="/dashboard"
+          to={`/dashboard/${isAdmin ? "admin-home" : "user-home"}`}
           className={({ isActive }) => (isActive ? "active" : "default")}>
           <div className="flex items-center gap-1">
             <MdSpaceDashboard className="text-lg" />
