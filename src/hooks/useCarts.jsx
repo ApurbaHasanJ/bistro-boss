@@ -12,7 +12,7 @@ const useCarts = () => {
   } = useQuery({
     queryKey: ["carts", user?.email],
     queryFn: () =>
-      fetch(`http://localhost:5000/carts?email=${user.email}`).then((res) =>
+      fetch(`https://bistro-boss-server-cyan-nu.vercel.app/carts?email=${user.email}`).then((res) =>
         res.json()
       ),
   });

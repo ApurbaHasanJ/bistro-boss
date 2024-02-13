@@ -42,6 +42,7 @@ const Login = () => {
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
+
         navigate(from, { replace: true });
         Swal.fire({
           position: "top-end",
@@ -67,12 +68,12 @@ const Login = () => {
 
   return (
     <div
-      className="py-20 bg-transparent z-20"
+      className="py-20 bg-transparent px-3 z-20"
       style={{
         backgroundImage: `url('https://i.postimg.cc/tg8rPHSH/authentication.png')`,
       }}>
       <div
-        className="my-container shadow-xl"
+        className="my-container md:shadow-xl"
         style={{
           boxShadow: "10px 10px 10px 10px rgba(0, 0, 0, 0.25)",
         }}>
@@ -87,7 +88,7 @@ const Login = () => {
               alt=""
             />
           </div>
-          <div className=" p-10 mx-3 lg:mx-0 rounded-lg">
+          <div className="md:p-10 rounded-lg">
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="form-control mb-3">
                 <label className="label text-base font-medium text-slate-900 ">

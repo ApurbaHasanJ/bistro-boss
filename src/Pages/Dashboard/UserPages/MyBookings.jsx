@@ -9,7 +9,7 @@ const MyBookings = () => {
   const [reservations, setReservations] = useState([]);
 
   useEffect(() => {
-    axios(`http://localhost:5000/reservation/user/${user?.email}`)
+    axios(`https://bistro-boss-server-cyan-nu.vercel.app/reservation/user/${user?.email}`)
       .then((res) => {
         console.log(res.data);
         setReservations(res.data);

@@ -12,6 +12,9 @@ import { Helmet } from "react-helmet-async";
 const Home = () => {
   useEffect(() => {
     window.history.scrollRestoration = "manual";
+    window.scrollTo({
+      top: 0,
+    });
   }, []);
 
   return (

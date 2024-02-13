@@ -36,7 +36,7 @@ const UserDropdown = ({ handleToggleDropDown }) => {
       className="md:text-sm text-xs grid justify-start items-start font-semibold md:drop-shadow-2xl p-2 rounded-md bg-white text-black border md:shadow-xl hover:shadow-2xl whitespace-nowrap">
       {user ? (
         <>
-          <div className="px-4 py-3">
+          <div className="px-4 py-3 border-b">
             <span className="block text-gray-900 ">{user?.displayName}</span>
             <span className="block  text-gray-500 truncate dark:text-gray-400">
               {user?.email}
@@ -52,7 +52,7 @@ const UserDropdown = ({ handleToggleDropDown }) => {
             </li>
             <li>
               <Link
-                to="dashboard/feedback"
+                to="dashboard/add-review"
                 className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
                 Feedback
               </Link>
@@ -87,7 +87,7 @@ const UserDropdown = ({ handleToggleDropDown }) => {
 
           <li>
             <Link
-              to="dashboard/feedback"
+              to="dashboard/add-review"
               className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
               Feedback
             </Link>

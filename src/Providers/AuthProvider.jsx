@@ -60,13 +60,13 @@ const AuthProvider = ({ children }) => {
   // continue with Facebook
   const continueWithFacebook = () => {
     setLoading(true);
-    signInWithPopup(auth, facebookProvider);
+    return signInWithPopup(auth, facebookProvider);
   };
 
   // Continue with github
   const continueWithGithub = () => {
     setLoading(true);
-    signInWithPopup(auth, githubProvider);
+    return signInWithPopup(auth, githubProvider);
   };
 
   // refresh user profile
@@ -92,10 +92,11 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      console.log(currentUser);
 
       if (currentUser) {
         axios
-          .post("http://localhost:5000/jwt", {
+          .post("https://bistro-boss-server-cyan-nu.vercel.app/jwt", {
             email: currentUser.email,
           })
           .then((res) => {

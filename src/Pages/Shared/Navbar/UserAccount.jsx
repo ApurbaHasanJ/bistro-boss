@@ -7,7 +7,6 @@ import UserDropdown from "./UserDropdown";
 const UserAccount = () => {
   const { user } = useContext(AuthContext);
   const [showDropDown, setShowDropDown] = useState(false);
-  
 
   const handleToggleDropDown = () => {
     setShowDropDown(!showDropDown);
@@ -19,7 +18,7 @@ const UserAccount = () => {
         <div className="relative">
           <div
             onClick={handleToggleDropDown}
-            className=" z-50 items-center flex md:flex-row flex-col gap-2 duration-300 text-white hover:text-slate-400 rounded-full">
+            className=" z-50 items-center flex md:flex-row flex-col gap-2 duration-300 text-white hover:text-[#EEFF25] rounded-full">
             {user?.photoURL ? (
               <img
                 src={user?.photoURL}
@@ -29,7 +28,7 @@ const UserAccount = () => {
             ) : (
               <div className="">
                 <FaUserLarge
-                  className={`${user? "text-[22px]": "text-lg"}`}
+                  className={`${user ? "text-[22px]" : "text-lg"}`}
                   title={user?.displayName}
                 />
               </div>
@@ -37,7 +36,7 @@ const UserAccount = () => {
             <div className="">{!user && <p>Login</p>}</div>
           </div>
           {showDropDown && (
-            <div className="absolute right-0 z-40 top-12">
+            <div className="absolute right-0 z-40 md:top-14 top-[62px]">
               <UserDropdown handleToggleDropDown={handleToggleDropDown} />
             </div>
           )}

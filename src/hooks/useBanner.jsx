@@ -10,12 +10,10 @@ const useBanner = () => {
   } = useQuery({
     queryKey: ["banners"],
     queryFn: () =>
-      fetch("http://localhost:5000/banners").then((res) => res.json()),
+      fetch("https://bistro-boss-server-cyan-nu.vercel.app/banners").then((res) => res.json()),
   });
 
-  if (isPending) {
-    <Loader />;
-  }
+  
   if (error) {
     return "An error has occurred: " + error.message;
   }

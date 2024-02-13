@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import AdminNavItems from "../../Pages/Shared/DashNavItems/AdminNavItems";
 import GeneralNavItems from "../../Pages/Shared/DashNavItems/GeneralNavItems";
 import UserNavItems from "../../Pages/Shared/DashNavItems/UserNavItems";
@@ -10,7 +10,7 @@ import useAdmin from "../../hooks/useAdmin";
 
 const Dashboard = () => {
   const [showDashboard, setShowDashboard] = useState(false);
-  const[isAdmin, adminLoading]=useAdmin()
+  const [isAdmin, adminLoading] = useAdmin();
   // const isAdmin = true;
   // const adminLoading = false;
 
@@ -19,7 +19,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className=" md:flex ">
+    <div className=" lg:flex ">
       {/* Dashboard */}
 
       {/* sidebar for lg and md */}
@@ -29,14 +29,16 @@ const Dashboard = () => {
         } lg:block hidden pr-5 bg-fixed relative  w-[295px]  overflow-hidden transition-all shadow-2xl shadow-gray-500 pt-14`}>
         <div className=" fixed">
           {/* title for large device */}
-          <div className=" lg:block hidden md:ml-4 mx-auto">
-            <h2 className="md:text-4xl text-2xl font-black font-[Cinzel] whitespace-nowrap">
-              Bistro Boss
-            </h2>
-            <p className="font-[Cinzel] font-bold tracking-[5px] md:tracking-[9.12px]">
-              Restaurant
-            </p>
-          </div>
+          <Link to="/">
+            <div className=" lg:block hidden md:ml-4 mx-auto">
+              <h2 className="md:text-4xl text-2xl font-black font-[Cinzel] whitespace-nowrap">
+                Bistro Boss
+              </h2>
+              <p className="font-[Cinzel] font-bold tracking-[5px] md:tracking-[9.12px]">
+                Restaurant
+              </p>
+            </div>
+          </Link>
           {/* logo for smaller device */}
           <div className="w-14 ml-3 lg:hidden block drop-shadow-2xl  rounded-2xl bg-white p-2">
             <img src="https://i.postimg.cc/1tTCNWFH/logo.png" alt="Logo" />
@@ -51,17 +53,17 @@ const Dashboard = () => {
       </div>
 
       {/* Top bar for */}
-      <nav className="bg-[#D1A054] py-4 md:hidden block ">
+      <nav className="bg-[#D1A054] sticky top-0 right-0 w-full z-50 py-4 lg:hidden block">
         {/* title for sm device */}
         <div className="flex justify-between items-center md:ml-4 mx-6">
-          <div className="block md:hidden ">
+        <Link to="/">
             <h2 className="md:text-4xl text-2xl font-black font-[Cinzel] whitespace-nowrap">
               Bistro Boss
             </h2>
             <p className="font-[Cinzel] font-bold tracking-[5px] md:tracking-[9.12px]">
               Restaurant
             </p>
-          </div>
+          </Link>
           {showDashboard ? (
             <button onClick={handleToggleDashboard}>
               <RxCross2 className="w-11 h-7  -mr-3" title="MENU" />
@@ -76,8 +78,8 @@ const Dashboard = () => {
         <div
           className={`fixed bg-[#D1A054] h-full pb-4 pr-2 ${
             showDashboard ? "left-0" : "-left-[400px]"
-          } transform duration-700 shadow-2xl top-[89px] z-50`}>
-          <div className=" pt-5 ">
+          } transform duration-700 shadow-2xl top-[89px]`}>
+          <div className=" pt-6 ">
             {isAdmin ? <AdminNavItems /> : <UserNavItems />}
             <hr className="h-[0.1px] w-4/6 mx-auto my-7 bg-white" />
             <GeneralNavItems />

@@ -14,7 +14,7 @@ const UserActivity = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/reviews/user/${user.email}`)
+      .get(`https://bistro-boss-server-cyan-nu.vercel.app/reviews/user/${user.email}`)
       .then((res) => {
         console.log(res.data);
         setReviews(res.data);

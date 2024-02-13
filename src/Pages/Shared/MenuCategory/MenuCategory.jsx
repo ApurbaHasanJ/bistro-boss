@@ -34,7 +34,7 @@ const MenuCategory = ({ menus, title, subTitle, img, menuTitle, loading }) => {
       {loading ? (
         <Loader />
       ) : (
-        <div className="grid md:grid-cols-2 gap-5 my-container mt-11 ">
+        <div className="grid md:grid-cols-2 grid-cols-1 gap-5 my-container mt-11 ">
           {menus.map((menu) => (
             <Menus key={menu._id} menu={menu} />
           ))}

@@ -13,7 +13,7 @@ const UserNavItems = () => {
   const [carts] = useCart();
   return (
     <nav className="w-full font-[Cinzel]">
-      <ul className="flex flex-col md:gap-6 gap-4 items-start">
+      <ul className="flex flex-col md:gap-6 gap-4 items-start ml-2">
         <li>
           <NavLink
             to="/dashboard/user-home"
@@ -21,7 +21,7 @@ const UserNavItems = () => {
               isActive ? "dashActive" : "dashDefault"
             }>
             <div className="flex items-center justify-start gap-4">
-              <FaHome className="md:text-base text-xs md:mx-0 mx-auto" title="USER HOME" />
+              <FaHome className="md:text-2xl text-base" title="USER HOME" />
               <span className="md:text-base text-xs font-semibold whitespace-nowrap">
                 USER HOME
               </span>
@@ -36,7 +36,7 @@ const UserNavItems = () => {
             }>
             <div className="flex items-center justify-start gap-4">
               <FaCalendarAlt
-                className="md:text-base text-xs md:mx-0 mx-auto"
+                className="md:text-2xl text-base"
                 title="RESERVATION"
               />
               <span className="md:text-base text-xs font-semibold whitespace-nowrap">
@@ -53,7 +53,7 @@ const UserNavItems = () => {
             }>
             <div className="flex items-center justify-start gap-4">
               <FaWallet
-                className="md:text-base text-xs md:mx-0 mx-auto"
+                className="md:text-2xl text-base"
                 title="PAYMENT HISTORY"
               />
               <span className="md:text-base text-xs font-semibold whitespace-nowrap">
@@ -71,10 +71,10 @@ const UserNavItems = () => {
             <div className="flex items-center justify-start gap-4">
               <div className="relative whitespace-nowrap">
                 <FaCartShopping
-                  className="md:text-base text-xs md:mx-0 mx-auto"
+                  className="md:text-2xl text-base"
                   title="MY CART"
                 />
-                <span className="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-red-600 border border-white rounded-full -top-2 -end-2 ">
+                <span className="absolute inline-flex items-center justify-center px-[2px] text-xs font-bold text-white bg-red-600 border border-white rounded-full -top-2 -end-2 ">
                   {carts?.length || 0}
                 </span>
               </div>
@@ -92,7 +92,7 @@ const UserNavItems = () => {
             }>
             <div className="flex items-center justify-start gap-4">
               <FaCalendarCheck
-                className="md:text-base text-xs md:mx-0 mx-auto"
+                className="md:text-2xl text-base"
                 title="MY BOOKINGS"
               />
               <span className="md:text-base text-xs font-semibold whitespace-nowrap">
@@ -109,7 +109,7 @@ const UserNavItems = () => {
             }>
             <div className="flex items-center justify-start gap-4">
               <MdReviews
-                className="md:text-base text-xs md:mx-0 mx-auto"
+                className="md:text-2xl text-base"
                 title="ADD REVIEWS"
               />
               <span className="md:text-base text-xs font-semibold whitespace-nowrap">

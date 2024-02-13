@@ -42,7 +42,7 @@ const SignUp = () => {
               emailVerified: loggedUser?.emailVerified,
               metadata: { ...loggedUser?.metadata },
             };
-            fetch("http://localhost:5000/users", {
+            fetch("https://bistro-boss-server-cyan-nu.vercel.app/users", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -124,7 +124,7 @@ const SignUp = () => {
               alt=""
             />
           </div>
-          <div className=" p-10 mx-3 lg:mx-0 rounded-lg">
+          <div className=" md:p-10 rounded-lg">
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="form-control mb-3">
                 <label className="label text-base font-medium text-slate-900 ">

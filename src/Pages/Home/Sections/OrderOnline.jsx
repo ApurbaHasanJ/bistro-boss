@@ -15,7 +15,7 @@ const OrderOnline = () => {
   const [ordersOnline, setOrdersOnline] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/orders-online")
+    fetch("https://bistro-boss-server-cyan-nu.vercel.app/orders-online")
       .then((res) => res.json())
       .then((data) => {
         setOrdersOnline(data);
@@ -33,6 +33,16 @@ const OrderOnline = () => {
           slidesPerView={4}
           spaceBetween={30}
           freeMode={true}
+          breakpoints={{
+            200: {
+              slidesPerView: 4,
+              spaceBetween: 13,
+            },
+            1023: {
+              slidesPerView: 4,
+              spaceBetween: 30,
+            },
+          }}
           autoplay={{
             delay: 2500,
             // disableOnInteraction: ,
@@ -40,9 +50,9 @@ const OrderOnline = () => {
           // pagination={{
           //   clickable: true,
           // }}
-          className="overflow-hidden"
+          className="overflow-hidden mt-11 "
           modules={[FreeMode, Pagination, Autoplay]}>
-          <div className="mySwiper my-container mt-11 ">
+          <div className="mySwiper my-container">
             {ordersOnline.map((orderOnline) => (
               <SwiperSlide key={orderOnline._id} className="drop-shadow-2xl">
                 <img

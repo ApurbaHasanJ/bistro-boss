@@ -12,7 +12,7 @@ const usePayHistory = () => {
   } = useQuery({
     queryKey: ["pay-history", user?.email],
     queryFn: () =>
-      fetch(`http://localhost:5000/pay-history/user/${user?.email}`).then(
+      fetch(`https://bistro-boss-server-cyan-nu.vercel.app/pay-history/user/${user?.email}`).then(
         (res) => res.json()
       ),
   });

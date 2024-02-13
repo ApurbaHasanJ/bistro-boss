@@ -14,96 +14,56 @@ const SocialSignup = () => {
 
   const from = location.state?.from?.pathname || "/";
 
-  // google sign up
-  const handleGoogleSignIn = () => {
-    continueWithGoogle()
-      .then((result) => {
-        const loggedUser = result.user;
-        // console.log(loggedUser);
-        // take data to database
-        const userData = {
-          name: loggedUser?.displayName,
-          email: loggedUser?.email,
-          role: "user",
-          emailVerified: loggedUser?.emailVerified,
-          metadata: { ...loggedUser?.metadata },
-        };
-        fetch("http://localhost:5000/users", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(userData),
-        })
-          .then((res) => res.json())
-          .then(() => {
-            Swal.fire({
-              position: "top-end",
-              icon: "success",
-              title: "Sign in Successfully",
-              showConfirmButton: false,
-              timer: 1500,
+  const handleSignIn = (signInFunction) => {
+    return () => {
+      signInFunction()
+        .then((result) => {
+          const loggedUser = result.user;
+          // console.log(loggedUser);
+          // take data to database
+          const userData = {
+            name: loggedUser?.displayName,
+            email: loggedUser?.email,
+            role: "user",
+            emailVerified: loggedUser?.emailVerified,
+            metadata: { ...loggedUser?.metadata },
+          };
+          fetch("https://bistro-boss-server-cyan-nu.vercel.app/users", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(userData),
+          })
+            .then((res) => res.json())
+            .then(() => {
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Sign in Successfully",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              navigate(from, { replace: true });
             });
-            navigate(from, { replace: true });
+        })
+        .catch((error) => {
+          console.log(error);
+          const errorMessage = error.message.split('\n')[0]; // Get the first line of the error message
+          Swal.fire({
+            icon: "error",
+            title: "Error login user",
+            text: errorMessage,
           });
-      })
-      .catch((error) => {
-        console.log(error);
-        Swal.fire({
-          icon: "error",
-          title: "Error login user",
-          text: "Please try again.",
         });
-      });
+    };
   };
-
-  // continue with github
-  const handleGitHubSignIn = () => {
-    continueWithGithub()
-      .then((result) => {
-        const loggedUser = result.user;
-        console.log(loggedUser);
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "Sign in Successfully",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-        Swal.fire({
-          icon: "error",
-          title: "Error login user",
-          text: "Please try again.",
-        });
-      });
-  };
-
-  // Continue with facebook login
-  const handleFacebookSignIn = () => {
-    continueWithFacebook()
-      .then((result) => {
-        const loggedUser = result.user;
-        console.log(loggedUser);
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "Sign in Successfully",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-        Swal.fire({
-          icon: "error",
-          title: "Error login user",
-          text: "Please try again.",
-        });
-      });
-  };
+  
+  // Usage for login or sign up
+  const handleGoogleSignIn = handleSignIn(continueWithGoogle);
+  const handleGitHubSignIn = handleSignIn(continueWithGithub);
+  const handleFacebookSignIn = handleSignIn(continueWithFacebook);
+  
 
   return (
     <div className=" w-full  flex gap-8 justify-center items-center btn-sec">

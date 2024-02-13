@@ -22,7 +22,7 @@ const Testimonials = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/reviews")
+    fetch("https://bistro-boss-server-cyan-nu.vercel.app/reviews")
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, []);
@@ -69,7 +69,7 @@ const Testimonials = () => {
                   icon={faQuoteLeft}
                 />
                 <p className="w-full text-center">{review?.recipeDetails}</p>
-                <h3 className="text-2xl text-[#CD9003] uppercase mt-2">
+                <h3 className="md:text-2xl text-[#CD9003] uppercase mt-2">
                   {review?.name}
                 </h3>
               </div>

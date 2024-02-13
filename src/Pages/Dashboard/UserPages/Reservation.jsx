@@ -26,7 +26,7 @@ const Reservation = () => {
       name, email, phone, guests, date, time
     }
     axios
-      .post("http://localhost:5000/reservation/user", reservation)
+      .post("https://bistro-boss-server-cyan-nu.vercel.app/reservation/user", reservation)
       .then((res) => {
         console.log(res.data);
         if (res.data?.insertedId) {

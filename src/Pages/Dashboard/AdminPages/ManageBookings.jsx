@@ -25,7 +25,7 @@ const ManageBookings = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axiosSecure
-          .patch(`http://localhost:5000/reservation/admin/${id}`)
+          .patch(`https://bistro-boss-server-cyan-nu.vercel.app/reservation/admin/${id}`)
           .then((res) => {
             if (res.data.modifiedCount > 0) {
               refetch();

@@ -12,7 +12,7 @@ const useAdminReservations = () => {
     queryKey: ["reservations"],
     queryFn: () =>
       axiosSecure
-        .get("http://localhost:5000/reservation/admin")
+        .get("https://bistro-boss-server-cyan-nu.vercel.app/reservation/admin")
         .then((res) => res.data),
   });
 

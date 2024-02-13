@@ -33,7 +33,7 @@ const ManageItems = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axiosSecure
-          .delete(`http://localhost:5000/menus/admin/${menu?._id}`)
+          .delete(`https://bistro-boss-server-cyan-nu.vercel.app/menus/admin/${menu?._id}`)
           .then((res) => {
             console.log(res.data);
             if (res.data.deletedCount > 0) {

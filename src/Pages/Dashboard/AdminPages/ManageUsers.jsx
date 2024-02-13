@@ -22,7 +22,7 @@ const ManageUsers = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axiosSecure
-          .patch(`http://localhost:5000/users/admin/${user?._id}`)
+          .patch(`https://bistro-boss-server-cyan-nu.vercel.app/users/admin/${user?._id}`)
           .then((res) => {
             console.log(res.data);
             if (res.data.modifiedCount) {
@@ -56,7 +56,7 @@ const ManageUsers = () => {
     }).then((res) => {
       if (res.isConfirmed) {
         axiosSecure
-          .delete(`http://localhost:5000/users/admin/${user?._id}`)
+          .delete(`https://bistro-boss-server-cyan-nu.vercel.app/users/admin/${user?._id}`)
           .then((res) => {
             console.log(res.data);
             if (res.data.acknowledged) {

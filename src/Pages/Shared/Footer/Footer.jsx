@@ -3,8 +3,8 @@ const Footer = () => {
     <footer className="mt-24">
       <div className="md:grid md:grid-cols-2 md:items-center md:justify-center text-white  ">
         <div className="bg-[#1F2937] w-full mx-auto py-[96px] h-full">
-        <div className="text-center  w-4/6 mx-auto md:ml-auto">
-          <h3 className="text-3xl font-medium ">CONTACT US</h3>
+        <div className="text-center md:text-base text-sm  w-4/6 mx-auto md:ml-auto">
+          <h3 className="md:text-3xl text-xl font-medium ">CONTACT US</h3>
           <p className="mt-5">123 ABS Street, Uni 21, Bangladesh</p>
           <p>+88 123456789</p>
           <p>Mon - Fri: 08:00 - 22:00</p>
@@ -12,9 +12,9 @@ const Footer = () => {
           </div>
         </div>
         <div className="bg-[#111827] w-full mx-auto py-[96px] h-full">
-          <div className="text-center  w-4/6 mx-auto md:ml-auto">
-          <h3 className="font-medium text-3xl">Follow US</h3>
-          <p className=" text-lg mt-5">Join us on social media</p>
+          <div className="text-center w-4/6 mx-auto md:ml-auto">
+          <h3 className="font-medium md:text-3xl text-xl">Follow US</h3>
+          <p className=" md:text-lg text-base mt-5">Join us on social media</p>
           <div className="mt-7 flex gap-7 justify-center">
           <a>
               <svg
@@ -56,7 +56,7 @@ const Footer = () => {
       </div>
       <div className=" footer-center p-4 bg-[#151515]  text-white">
         <div>
-          <p>Copyright © 2023 - CulinaryCloud. All rights reserved.</p>
+          <p>Copyright © 2023 - Bistro Boss. All rights reserved.</p>
         </div>
       </div>
     </footer>

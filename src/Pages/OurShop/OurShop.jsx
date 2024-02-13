@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import PageBanner from "../Shared/PageBanner/PageBanner";
 import { Tabs, TabList, TabPanel, Tab } from "react-tabs";
@@ -7,17 +6,27 @@ import useMenu from "../../hooks/useMenu";
 import RecipesTab from "./RecipesTab";
 import { useLocation } from "react-router-dom";
 import Loader from "../Shared/Loader/Loader";
+import { useState } from "react";
 
 const OurShop = () => {
   const [menus, loading] = useMenu();
   const location = useLocation();
   let menuTitle = ""; // Initialize menuTitle
 
+  // after navigate to the shop page
+  window.scrollTo({
+    top: 0,
+  });
+
+  // use the menuTitle in the component
   if (location.state && location.state.from) {
     menuTitle = location.state.from;
+    window.scrollTo({
+      top: 780,
+      behavior: "smooth",
+    });
   }
 
-  // Now, you can use the menuTitle in your component
   console.log(menuTitle);
 
   const categories = ["salad", "pizza", "soup", "dessert", "drinks"];
@@ -48,7 +57,7 @@ const OurShop = () => {
       />
 
       {/* body */}
-      <div className="my-container mt-28">
+      <div className="my-container mt-20">
         <Tabs
           selectedTabClassName=" uppercase border-b-4 border-[#BB8506] text-[#BB8506] py-2 font-medium"
           selectedIndex={categories.indexOf(selectedCategory)}

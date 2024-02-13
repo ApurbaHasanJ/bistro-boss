@@ -9,7 +9,7 @@ const useMenu = () => {
   } = useQuery({
     queryKey: ["menus"],
     queryFn: () =>
-      fetch("http://localhost:5000/menus").then((res) => res.json()),
+      fetch("https://bistro-boss-server-cyan-nu.vercel.app/menus").then((res) => res.json()),
   });
 
   // Reverse the data array

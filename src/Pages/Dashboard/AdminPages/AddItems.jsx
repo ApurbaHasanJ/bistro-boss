@@ -34,7 +34,7 @@ const AddItems = () => {
     // post item data if the photo post post successfully
     if (itemImage.img) {
       axiosSecure
-        .post("http://localhost:5000/menus/admin", menuData)
+        .post("https://bistro-boss-server-cyan-nu.vercel.app/menus/admin", menuData)
         .then((response) => {
           if (response.data.insertedId) {
             setLoading(false);

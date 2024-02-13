@@ -25,7 +25,7 @@ const UpdateItem = ({ item, setUpdating, refetch }) => {
     // console.log(menu);
 
     axiosSecure
-      .patch(`http://localhost:5000/menus/admin/${item?._id}`, menu)
+      .patch(`https://bistro-boss-server-cyan-nu.vercel.app/menus/admin/${item?._id}`, menu)
       .then((res) => {
         if (res.data.modifiedCount > 0) {
           refetch();

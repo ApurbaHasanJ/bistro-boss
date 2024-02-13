@@ -3,8 +3,8 @@
 const Menus = ({menu}) => {
     const {image, price, recipe, name} = menu
     return (
-        <div className="sm:flex grid gap-4 space-x-5">
-            <img className="w-[118px] h-[104px]    rounded-r-full rounded-b-full" src={image} alt="" />
+        <div className="sm:flex md:shadow-none shadow-md pb-1 rounded-b-lg rounded-r-lg grid gap-4 space-x-5">
+            <img className="w-[118px] h-[104px] rounded-r-full rounded-b-full" src={image} alt="" />
             <div>
                 <h3 className="text-lg">{name}--------------</h3>
                 <p>{recipe}</p>

@@ -2,7 +2,6 @@ import { useState } from "react";
 import FoodCard from "../Shared/FoosCard/FoodCard";
 
 const RecipesTab = ({ menus }) => {
-  
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
 
@@ -14,6 +13,10 @@ const RecipesTab = ({ menus }) => {
   // change the current page
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
+    window.scrollTo({
+      top: 780,
+      behavior: "smooth",
+    });
   };
 
   return (
@@ -36,8 +39,7 @@ const RecipesTab = ({ menus }) => {
                   ? "btn-card px-5"
                   : "bg-slate-100 rounded-md px-5 text-[#BB8506]"
               }`}
-              onClick={() => handlePageChange(index + 1)}
-            >
+              onClick={() => handlePageChange(index + 1)}>
               {index + 1}
             </button>
           ))}
@@ -45,6 +47,5 @@ const RecipesTab = ({ menus }) => {
     </>
   );
 };
-
 
 export default RecipesTab;

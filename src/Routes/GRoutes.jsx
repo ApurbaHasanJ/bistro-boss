@@ -23,6 +23,7 @@ import PaymentSuccess from "../Pages/Payments/PaymentSuccess";
 import PaymentError from "../Pages/Payments/PaymentError";
 import UserHome from "../Pages/Dashboard/UserPages/UserHome/UserHome";
 import AdminHome from "../Pages/Dashboard/AdminPages/AdminHome/AdminHome";
+import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
   {
@@ -75,27 +76,51 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "admin-home",
-        element: <AdminHome />,
+        element: (
+          <AdminRoute>
+            <AdminHome />
+          </AdminRoute>
+        ),
       },
       {
         path: "add-items",
-        element: <AddItems />,
+        element: (
+          <AdminRoute>
+            <AddItems />
+          </AdminRoute>
+        ),
       },
       {
         path: "manage-items",
-        element: <ManageItems />,
+        element: (
+          <AdminRoute>
+            <ManageItems />
+          </AdminRoute>
+        ),
       },
       {
         path: "update-item",
-        element: <UpdateItem />,
+        element: (
+          <AdminRoute>
+            <UpdateItem />
+          </AdminRoute>
+        ),
       },
       {
         path: "manage-bookings",
-        element: <ManageBookings />,
+        element: (
+          <AdminRoute>
+            <ManageBookings />
+          </AdminRoute>
+        ),
       },
       {
         path: "manage-users",
-        element: <ManageUsers />,
+        element: (
+          <AdminRoute>
+            <ManageUsers />
+          </AdminRoute>
+        ),
       },
       {
         path: "user-home",

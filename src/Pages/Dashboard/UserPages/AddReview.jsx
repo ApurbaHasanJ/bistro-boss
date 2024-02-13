@@ -33,7 +33,7 @@ const AddReview = () => {
       name: user?.displayName || "anonymous",
     };
 
-    axios.post("http://localhost:5000/reviews", { review }).then((res) => {
+    axios.post("https://bistro-boss-server-cyan-nu.vercel.app/reviews", { review }).then((res) => {
       if (res.data.insertedId) {
         setRating(0);
         reset();

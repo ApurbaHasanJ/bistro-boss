@@ -7,7 +7,7 @@ const useAxiosSecure = () => {
   const { logOut } = useContext(AuthContext);
 
   const navigate = useNavigate();
-  const axiosSecure = axios.create({ baseURL: "http://localhost:5000" });
+  const axiosSecure = axios.create({ baseURL: "https://bistro-boss-server-cyan-nu.vercel.app" });
   useEffect(() => {
     console.log("Component mounted");
     axiosSecure.interceptors.request.use((config) => {

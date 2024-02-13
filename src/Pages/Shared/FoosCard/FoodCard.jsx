@@ -23,7 +23,7 @@ const FoodCard = ({ menu }) => {
         userName: user.displayName,
         userEmail: user.email,
       };
-      fetch("http://localhost:5000/carts", {
+      fetch("https://bistro-boss-server-cyan-nu.vercel.app/carts", {
         method: "POST",
         headers: {
           "content-type": "application/json",

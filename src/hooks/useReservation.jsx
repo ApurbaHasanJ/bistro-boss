@@ -12,7 +12,7 @@ const useReservation = () => {
   } = useQuery({
     queryKey: ["reservation", user?.email],
     queryFn: () =>
-      fetch(`http://localhost:5000/reservation/user/${user.email}`).then((res) =>
+      fetch(`https://bistro-boss-server-cyan-nu.vercel.app/reservation/user/${user.email}`).then((res) =>
         res.json()
       ),
   });
