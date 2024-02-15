@@ -104,7 +104,7 @@ const SignUp = () => {
 
   return (
     <div
-      className="py-20 bg-transparent px-3 z-20"
+      className="py-20 bg-transparent min-h-screen grid grid-cols-1 justify-center items-center px-3 z-20"
       style={{
         backgroundImage: `url('https://i.postimg.cc/tg8rPHSH/authentication.png')`,
       }}>

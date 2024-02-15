@@ -14,12 +14,12 @@ const Navbar = () => {
   };
 
   return (
-    <header className=" navbar lg:flex-row flex-row-reverse justify-between fixed z-10 bg-gray-900 bg-opacity-50 text-white px-10 lg:pt-6 lg:pb-4 pt-3 pb-2.5">
+    <header className=" navbar lg:flex-row flex-row-reverse justify-between fixed z-10 bg-gray-900 bg-opacity-50 text-white md:px-10 px-3 lg:pt-6 lg:pb-4 pt-3 pb-2.5">
       <div className="lg:hidden block">
         <UserAccount />
       </div>
       <div className="lg:navbar-start">
-        <Link className=" normal-case text-xl">
+        <Link to="/" className=" normal-case text-xl">
           <div>
             <h2 className="lg:text-[35px] text-xl font-black font-[Cinzel]">
               Bistro Boss
