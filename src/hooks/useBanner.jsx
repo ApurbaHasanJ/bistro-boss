@@ -1,7 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 
-import Loader from "../Pages/Shared/Loader/Loader";
-
 const useBanner = () => {
   const {
     isPending,

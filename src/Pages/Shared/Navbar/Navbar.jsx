@@ -14,29 +14,29 @@ const Navbar = () => {
   };
 
   return (
-    <header className=" navbar md:flex-row flex-row-reverse justify-between fixed z-10 bg-gray-900 bg-opacity-30 text-white px-10 md:pt-6 md:pb-4 pt-3 pb-2.5">
-      <div className="md:hidden block">
+    <header className=" navbar lg:flex-row flex-row-reverse justify-between fixed z-10 bg-gray-900 bg-opacity-50 text-white px-10 lg:pt-6 lg:pb-4 pt-3 pb-2.5">
+      <div className="lg:hidden block">
         <UserAccount />
       </div>
-      <div className="md:navbar-start">
+      <div className="lg:navbar-start">
         <Link className=" normal-case text-xl">
           <div>
-            <h2 className="md:text-[35px] text-xl font-black font-[Cinzel]">
+            <h2 className="lg:text-[35px] text-xl font-black font-[Cinzel]">
               Bistro Boss
             </h2>
-            <p className="font-[Cinzel] md:text-base text-xs font-bold tracking-[5px] md:tracking-[9.12px]">
+            <p className="font-[Cinzel] lg:text-base text-xs font-bold tracking-[5px] lg:tracking-[9.12px]">
               Restaurant
             </p>
           </div>
         </Link>
       </div>
-      <div className="md:navbar-end w-full hidden lg:flex">
+      <div className="lg:navbar-end w-full hidden lg:flex">
         <ul className="flex items-center gap-4 menu-horizontal px-1">
           <NavItems />
         </ul>
       </div>
 
-      <div className="md:navbar-end  lg:hidden">
+      <div className="lg:navbar-end  lg:hidden">
         <div className="dropdown" onClick={handleShowNavbar}>
           <label tabIndex={0} className=" lg:hidden">
             {showNavbar ? (
@@ -48,7 +48,7 @@ const Navbar = () => {
         </div>
 
         {showNavbar && (
-          <ul className=" absolute top-12 left-0 mt-5 p-2 px-5 shadow bg-opacity-30 grid gap-2 items-start rounded-br-xl bg-gray-900">
+          <ul className=" absolute top-12 left-0 mt-5 p-2 px-5 shadow bg-opacity-50 grid gap-2 items-start rounded-br-xl bg-gray-900">
             <NavItems />
           </ul>
         )}

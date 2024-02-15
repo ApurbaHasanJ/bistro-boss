@@ -21,7 +21,7 @@ const NavItems = () => {
         <NavLink
           to="/"
           className={({ isActive }) => (isActive ? "active" : "default")}>
-          <div className="flex items-center gap-1">
+          <div className="flex items-center whitespace-nowrap gap-1">
             <HiHome className="text-lg" />
             <span>HOME</span>
           </div>
@@ -31,7 +31,7 @@ const NavItems = () => {
         <NavLink
           to="/contact-us"
           className={({ isActive }) => (isActive ? "active" : "default")}>
-          <div className="flex items-center gap-1">
+          <div className="flex items-center whitespace-nowrap gap-1">
             <MdContactSupport className="text-lg" />
             <span>CONTACT US</span>
           </div>
@@ -41,7 +41,7 @@ const NavItems = () => {
         <NavLink
           to={`/dashboard/${isAdmin ? "admin-home" : "user-home"}`}
           className={({ isActive }) => (isActive ? "active" : "default")}>
-          <div className="flex items-center gap-1">
+          <div className="flex items-center whitespace-nowrap gap-1">
             <MdSpaceDashboard className="text-lg" />
             <span>DASHBOARD</span>
           </div>
@@ -51,7 +51,7 @@ const NavItems = () => {
         <NavLink
           to="/menu"
           className={({ isActive }) => (isActive ? "active" : "default")}>
-          <div className="flex items-center gap-1">
+          <div className="flex items-center whitespace-nowrap gap-1">
             <MdOutlineMenuBook className="text-lg" />
             <span>OUR MENU</span>
           </div>
@@ -61,13 +61,13 @@ const NavItems = () => {
         <NavLink
           to="/shop"
           className={({ isActive }) => (isActive ? "active" : "default")}>
-          <div className="flex items-center gap-1">
+          <div className="flex items-center whitespace-nowrap gap-1">
             <FaShop className="text-lg" />
             <span>OUR SHOP</span>
           </div>
         </NavLink>
       </li>
-      <li className="hidden md:block">
+      <li className="hidden lg:block">
         <UserAccount />
       </li>
     </>
