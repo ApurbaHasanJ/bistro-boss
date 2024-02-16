@@ -43,7 +43,7 @@ const UserDropdown = ({ handleToggleDropDown }) => {
             </span>
           </div>
           <ul className="py-2" aria-labelledby="user-menu-button">
-            <li>
+            <li className={adminLoading && "hidden"}>
               <Link
                 to={`/dashboard/${isAdmin ? "admin-home" : "user-home"}`}
                 className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
@@ -70,16 +70,10 @@ const UserDropdown = ({ handleToggleDropDown }) => {
         </>
       ) : (
         <ul>
-          <li>
+          <li className={adminLoading && "hidden"}>
             <Link
               onClick={handleToggleDropDown}
-              to={`/dashboard/${
-                adminLoading
-                  ? "loading..."
-                  : isAdmin
-                  ? "admin-home"
-                  : "user-home"
-              }`}
+              to={`/dashboard/${isAdmin ? "admin-home" : "user-home"}`}
               className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
               Dashboard
             </Link>

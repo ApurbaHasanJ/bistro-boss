@@ -8,7 +8,7 @@ const AdminRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
   const [isAdmin, adminLoading] = useAdmin();
   const location = useLocation();
-  if (loading || adminLoading) {
+  if (adminLoading || loading) {
     return (
       <div className="h-screen flex justify-center items-center">
         <LandingPage />

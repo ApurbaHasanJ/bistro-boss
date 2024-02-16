@@ -90,29 +90,32 @@ const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
       console.log(currentUser);
-
+  
       if (currentUser) {
-        axios
-          .post("https://bistro-boss-server-cyan-nu.vercel.app/jwt", {
+        try {
+          const response = await axios.post("https://bistro-boss-server-cyan-nu.vercel.app/jwt", {
             email: currentUser.email,
-          })
-          .then((res) => {
-            // console.log(res.data);
-            localStorage.setItem("bistro_access_token", res.data.token);
-
-            setLoading(false);
           });
+          // console.log(response.data);
+          localStorage.setItem("bistro_access_token", response.data.token);
+        } catch (error) {
+          console.error("Error fetching JWT:", error);
+          // Handle error if needed
+        } finally {
+          setLoading(false);
+        }
       } else {
         localStorage.removeItem("bistro_access_token");
         setLoading(false);
       }
     });
-
+  
     return () => unsubscribe();
   }, []);
+  
 
   const authInfo = {
     user,

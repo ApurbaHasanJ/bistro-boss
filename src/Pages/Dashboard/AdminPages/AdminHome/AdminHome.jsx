@@ -9,7 +9,7 @@ const AdminHome = () => {
         HI, WELCOME BACK!
       </h2>
       <AdminHeroInfo />
-      <div className="mt-16 grid md:gap-1 gap-14 md:grid-cols-2 grid-cols-1">
+      <div className="mt-16 grid md:gap-1 gap-14 lg:grid-cols-2 grid-cols-1 justify-center items-center">
         <MenuSoldChart />
         <SoldPieChart />
       </div>

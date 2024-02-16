@@ -10,7 +10,7 @@ import UserAccount from "./UserAccount";
 import useAdmin from "../../../hooks/useAdmin";
 
 const NavItems = () => {
-  const [isAdmin] = useAdmin();
+  const [isAdmin, adminLoading] = useAdmin();
   // const isAdmin = false;
   // const adminLoading = false;
 
@@ -37,7 +37,7 @@ const NavItems = () => {
           </div>
         </NavLink>
       </li>
-      <li>
+      <li className={adminLoading && "hidden"}>
         <NavLink
           to={`/dashboard/${isAdmin ? "admin-home" : "user-home"}`}
           className={({ isActive }) => (isActive ? "active" : "default")}>

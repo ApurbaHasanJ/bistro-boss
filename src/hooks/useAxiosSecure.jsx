@@ -13,7 +13,7 @@ const useAxiosSecure = () => {
     axiosSecure.interceptors.request.use((config) => {
       console.log("config",config);
       const token = localStorage.getItem("bistro_access_token");
-      console.log("Token:", token);
+      // console.log("Token:", token);
       if (token) {
         config.headers.Authorization = `Bearer ${token}`;
       }
